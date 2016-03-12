@@ -15,7 +15,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var cors = require('cors');
+//var cors = require('cors');
 
 /**
  * MongoDB
@@ -52,12 +52,12 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
  *The CORS standard describes new HTTP headers which provide browsers and servers
  * a way to request remote URLs only when they have permission.
  */
-app.use( cors() );
+//app.use( cors() );
 
 /**
  * Load the API
  */
-app.use( '/',require('./api') );
+//app.use( '/',require('./api') );
 
 /**
  * Angular Application

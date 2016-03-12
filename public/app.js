@@ -20,14 +20,14 @@ var app = angular.module('COMP4513',['ui.router'])
 
     .config( function($stateProvider, $urlRouterProvider){
 
-        $urlRouterProvider.otherwise('/auth');
+        $urlRouterProvider.otherwise('/login');
 
         $stateProvider
 
             /*Login page's state and nested views*/
             .state('login',{
                 url:'/login',
-                templateUrl: 'views/auth.html',
+                templateUrl: 'views/login.html',
                 controller: 'AuthenitcationController',
             })
 
