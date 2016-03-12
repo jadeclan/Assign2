@@ -38,7 +38,7 @@ var app = angular.module('COMP4513',['ui.router'])
             })
 
             /*nested view on the dashbard page*/
-            .state('dashobard.about', {
+            .state('dashboard.about', {
                 url: '/about',
                 templateUrl: 'views/about.html',
                 controller: function($scope, $http){
