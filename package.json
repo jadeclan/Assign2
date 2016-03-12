@@ -7,7 +7,9 @@
     "assign2": "www.js"
   },
   "dependencies": {
+    "bluebird": "^3.3.4",
     "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0"
   },

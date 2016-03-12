@@ -22,7 +22,7 @@ var morgan = require('morgan');
  * Mongoose translates data in the database to JavaScript objects for use in your application
  */
 mongoose.connect('mongodb://localhost/comp4513');
-mongoose.Promise = require('bluebird');
+//mongoose.Promise = require('bluebird');
 
 /**
  *Express is a minimal and flexible Node.js web application framework that
