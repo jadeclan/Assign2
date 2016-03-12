@@ -1,0 +1,31 @@
+{
+  "name": "assign2",
+  "version": "1.0.0",
+  "description": "Comp 4513 - Assignment 2",
+  "main": "app.js",
+  "bin": {
+    "assign2": "www.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.7",
+    "mongodb-core": "^1.3.3",
+    "mongoose": "^4.4.6",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jadeclan/Assign2.git"
+  },
+  "author": "Sonia Pitrola, Nolan Walker, Mark O'Donnell, James Bergeron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jadeclan/Assign2/issues"
+  },
+  "homepage": "https://github.com/jadeclan/Assign2#readme"
+}
