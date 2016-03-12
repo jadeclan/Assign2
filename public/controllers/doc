@@ -1,0 +1,16 @@
+controllers can be made into separate js files if a lot of work needs
+to be done for that specific controller.
+If the controller is relatively small it can be stored and created in the
+public/app.js file under the specific .state() that creates the page you are
+working on.
+
+ex:
+    .state('dashboard.settings', {
+                    url: '/settings',
+                    templateUrl: 'views/settings.html',
+                    controller: function($scope, $http, $uibModal) {
+                    }
+           })
+
+More information and explanation can be found at:
+    https://scotch.io/tutorials/angular-routing-using-ui-router
