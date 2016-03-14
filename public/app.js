@@ -9,7 +9,7 @@
  *
  * https://docs.angularjs.org/api/ng/function/angular.module
  */
-var app = angular.module('COMP4513',['ui.router'])
+var app = angular.module('COMP4513',['ui.router', 'ngMaterial'])
 
     /**
      * ui.router --> https://scotch.io/tutorials/angular-routing-using-ui-router
@@ -18,7 +18,12 @@ var app = angular.module('COMP4513',['ui.router'])
      * These are created in your app.js.
      */
 
-    .config( function($stateProvider, $urlRouterProvider){
+    .config( function($stateProvider, $urlRouterProvider, $mdThemingProvider){
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('pink')
+            .accentPalette('orange')
+            .warnPalette('red');
 
         $urlRouterProvider.otherwise('/login');
 
