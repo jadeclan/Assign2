@@ -33,21 +33,39 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial'])
             .state('login',{
                 url:'/login',
                 templateUrl: 'views/login.html',
-                controller: 'AuthenitcationController',
+                controller: 'AuthenticationController'
             })
 
             /*dashboard page's state and nested views*/
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard.html'
+                templateUrl: 'views/dashboard.html',
+                controller: 'dashboardController'
             })
 
-            /*nested view on the dashbard page*/
+            /*nested view on the dashboard page
+             *this will be the about page*/
             .state('dashboard.about', {
                 url: '/about',
                 templateUrl: 'views/about.html',
-                controller: function($scope, $http){
+                controller: 'aboutController'
+            })
 
-                }
+            .state('dashboard.toDo', {
+                url: '/toDo',
+                templateUrl: 'views/toDo.html',
+                controller: 'toDoController'
+            })
+
+            .state('dashboard.messages', {
+                url: '/messages',
+                templateUrl: 'views/messages.html',
+                controller: 'messagesController'
+            })
+
+            .state('dashboard.books', {
+                url: '/books',
+                templateUrl: 'views/books.html',
+                controller: 'booksController'
             })
     });

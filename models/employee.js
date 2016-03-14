@@ -2,7 +2,7 @@
  * Created by nwalker on 3/10/16.
  */
 
-var Promise = require('bluebird');
+//var Promise = require('bluebird');
 var mongoose = require('mongoose');
 var util = require('util');
 
