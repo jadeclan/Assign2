@@ -4,7 +4,13 @@
 
 //var Promise = require('bluebird');
 var mongoose = require('mongoose');
-var util = require('util');
+var moment = require('moment');
+var jwt = require('jsonwebtoken');
+var config = require('../config');
+
+/**
+ * moment is being use to output a unix timestamp
+ */
 
 var employeeSchema = new mongoose.Schema({
 
@@ -14,71 +20,70 @@ var employeeSchema = new mongoose.Schema({
     lastname: String,
     username: String,
     password: String,
-    TODO: [{
+    salt: String,
+
+    todo: [{
         id: Number,
         status: String,
         priority: String,
         date: Date,
         description: String
-    }]
+    }],
+
+    messages: [{
+        id: Number,
+        contact: {
+            firstname: String,
+            lastname: String,
+            university: {
+                id: Number,
+                name: String,
+                address: String,
+                city: String,
+                state: String,
+                zip: String,
+                website: String,
+                latitude: Number,
+                longitude: Number
+            },
+        date: Date,
+        category: String,
+        content: String
+        }
+    }],
+    books: [
+        {
+            id: Number,
+            isbn10: Number,
+            isbn13: Number,
+            title: String,
+            category: String
+        }
+    ]
+
 });
 
+employeeSchema.methods.createToken = function(){
+    var employee = this;
 
+    var token = jwt.sign({
+        sub: employee._id,
+        iat: moment().unix(),
+        exp: moment().add(14, 'days').unix()
+    }, config.AUTH_SECRET_KEY );
 
+    //return employee.save()
+    //    .then( () => [ employee, token] );
+};
 
+/*employeeSchema.statics.Authenticate = function(username, password){
+    return this.model('Employee').findOne( {username: username}, '+password')
+        .then(employee => {
+            if(!employee)
+                // needs to throw error here...
 
+            return employee.validatePassword(password);
+        });
+};*/
 
-/*
-
-    employee:{
-    id:2,
-        "guid":"c29cb8f4-d8d5-40e9-8bc8-b054daa2e863",
-        "firstname":"Elizabeth",
-        "lastname":"Morgan",
-        "username":"emorgan1",
-        "password":"lLMVck6NjIlu",
-        "salt":"velit",
-        "todo":[
-        {
-            "id":1,
-            "status":"completed",
-            "priority":"low",
-            "date":"3/23/2015",
-            "description":"Maecenas leo odio, condimentum id, luctus nec"
-        },
-],
-    "messages":[
-        {
-            "id":1,
-            "contact":{
-                "firstname":"Anthony",
-                "lastname":"Ford",
-                "university":{
-                    "id":227757,
-                    "name":"Rice University",
-                    "address":"6100 S Main",
-                    "city":"Houston",
-                    "state":"Texas",
-                    "zip":"77005-1827",
-                    "website":"www.rice.edu",
-                    "latitude":29.716485,
-                    "longitude":-95.403625
-                }
-            },
-            "date":"8/25/2015",
-            "category":"Query",
-            "content":"Nam dui."
-        },
-        ...
-],
-    books:[
-        {
-            "id":567,
-            "isbn10":"0321906365",
-            "isbn13":9780321906366,
-            "title":"Writing and Reading Across the Curriculum, Brief Edition",
-            "category":"English"
-        }]
-
-
-});*/
+module.exports = mongoose.model('Employee', employeeSchema);

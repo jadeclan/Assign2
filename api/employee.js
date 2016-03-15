@@ -12,4 +12,7 @@
  * PUT      /employees/:username        update employee details
  * DELETE   /employees/:username        delete employee
  *
- * /
+ */
+
+var router = require('express').Router();
+var ensure
