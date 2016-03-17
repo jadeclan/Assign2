@@ -52,3 +52,5 @@ router.get('/employees', function(req, res, next) {
         .then( function(employee){ res.send(employee) } )
         .catch(next);
 });
+
+module.exports = router;
