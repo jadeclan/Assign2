@@ -20,10 +20,7 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial'])
 
     .config( function($stateProvider, $urlRouterProvider, $mdThemingProvider){
 
-        $mdThemingProvider.theme('default')
-            .primaryPalette('pink')
-            .accentPalette('orange')
-            .warnPalette('red');
+        $mdThemingProvider.theme('default');
 
         $urlRouterProvider.otherwise('/login');
 
@@ -39,16 +36,16 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial'])
             /*dashboard page's state and nested views*/
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard.html',
-                controller: 'dashboardController'
+                templateUrl: 'views/dashboard.html'
+                //controller: 'dashboardController'
             })
 
             /*nested view on the dashboard page
              *this will be the about page*/
             .state('dashboard.about', {
                 url: '/about',
-                templateUrl: 'views/about.html',
-                controller: 'aboutController'
+                templateUrl: 'views/about.html'
+                //controller: 'aboutController'
             })
 
             .state('dashboard.toDo', {
