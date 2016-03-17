@@ -19,7 +19,7 @@ var employeeSchema = new mongoose.Schema({
     firstname: String,
     lastname: String,
     username: String,
-    password: String,
+    password: { type: String, select: false },
     salt: String,
 
     todo: [{
@@ -72,18 +72,21 @@ employeeSchema.methods.createToken = function(){
         exp: moment().add(14, 'days').unix()
     }, config.AUTH_SECRET_KEY );
 
-    //return employee.save()
-    //    .then( () => [ employee, token] );
+    return employee.save()
+        .then( function() { return token; });
 };
 
-/*employeeSchema.statics.Authenticate = function(username, password){
+employeeSchema.statics.Authenticate = function(username, password){
     return this.model('Employee').findOne( {username: username}, '+password')
-        .then(employee => {
+        .then( function(employee){
             if(!employee)
                 // needs to throw error here...
 
-            return employee.validatePassword(password);
+            if(employee.password !== password)
+                // needs to throw error invalid password
+
+            return true;
         });
-};*/
+};
 
 module.exports = mongoose.model('Employee', employeeSchema);
