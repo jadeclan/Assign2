@@ -86,7 +86,7 @@ employeeSchema.statics.Authenticate = function(username, password){
             if(employee.password !== password)
                 throw new APIError(403, 'invalid password');
 
-            return true;
+            return employee;
         });
 };
 

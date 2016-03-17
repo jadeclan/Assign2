@@ -19,9 +19,9 @@ router.post('/auth/login', function (req, res, next) {
     if (!req.body.password) return res.status(400).send({message: 'password is required'});
 
     Employee.Authenticate(req.body.username, req.body.password)
-        .then( function(employee){ employee.createToken() } )
-    .spread( function(employee, token){ res.status(200).location('/employeeDetails').send({ token: token }) })
-    .catch(next);
+        .then( function(employee){ return employee.createToken() } )
+        .spread( function(employee, token){ return res.status(200).location('/employeeDetails').send({ token: token }) })
+        .catch(next);
 });
 
 module.exports = router;

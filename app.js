@@ -17,6 +17,8 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 //var cors = require('cors');
 
+var APIError = require('./errors/APIError');
+
 /**
  * MongoDB
  * Mongoose translates data in the database to JavaScript objects for use in your application
@@ -58,6 +60,16 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
  * Load the API
  */
 app.use( '/', require('./api') );
+
+// error handler
+app.use(function(err, req, res, next) {
+   if (err instanceof APIError) {
+      res.status(err.code).send(err.message);
+   } else {
+      next(err);
+   }
+});
+
 
 /**
  * Angular Application
