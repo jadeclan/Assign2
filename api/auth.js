@@ -20,7 +20,7 @@ router.post('/auth/login', function (req, res, next) {
 
     Employee.Authenticate(req.body.username, req.body.password)
         .then( function(employee){ return employee.createToken() } )
-        .spread( function(employee, token){ return res.status(200).location('/employeeDetails').send({ token: token }) })
+        .then( function(token){ return res.status(200).location('/employeeDetails').send({ token: token }) })
         .catch(next);
 });
 
