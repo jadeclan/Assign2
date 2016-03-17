@@ -3,7 +3,8 @@
  */
 
 app.controller('AuthenticationController', function($scope, $location, $auth){
-        $scope.showLogin = true;
+
+    $scope.showLogin = true;
 
         $scope.authenticate = function(provider) {
             $auth.authenticate(provider)
@@ -16,7 +17,7 @@ app.controller('AuthenticationController', function($scope, $location, $auth){
         };
 
         $scope.login = function() {
-            $auth.login($scope.user)
+            $auth.login($scope.employee)
                 .then(function() {
                     $location.path('/dashboard');
                 })

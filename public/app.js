@@ -9,7 +9,7 @@
  *
  * https://docs.angularjs.org/api/ng/function/angular.module
  */
-var app = angular.module('COMP4513',['ui.router', 'ngMaterial'])
+var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
 
     /**
      * ui.router --> https://scotch.io/tutorials/angular-routing-using-ui-router
@@ -65,4 +65,4 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial'])
                 templateUrl: 'views/books.html',
                 controller: 'booksController'
             })
-    });
+    }).run();

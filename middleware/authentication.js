@@ -32,11 +32,12 @@ module.exports = function(req, res, next){
         return res.status(401).send( {message: 'token expired'} );
 
     Employee.findById(payload.sub)
-        .then(employee => {
+        .then(function(employee){
             if(!employee)
                 return res.status(401).send( {message: "employee not found"} );
-        req.employee = employee;
 
-        next();
+            req.employee = employee;
+
+            next();
     });
 };
