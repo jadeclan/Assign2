@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var jwt = require('jsonwebtoken');
 var config = require('../config');
+var APIError = require('../errors/APIError');
 
 /**
  * moment is being use to output a unix timestamp
@@ -80,10 +81,10 @@ employeeSchema.statics.Authenticate = function(username, password){
     return this.model('Employee').findOne( {username: username}, '+password')
         .then( function(employee){
             if(!employee)
-                // needs to throw error here...
+                throw new APIError(403, 'invalid employee');
 
             if(employee.password !== password)
-                // needs to throw error invalid password
+                throw new APIError(403, 'invalid password');
 
             return true;
         });

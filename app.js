@@ -57,7 +57,7 @@ app.use( bodyParser.urlencoded( { extended: true } ) );
 /**
  * Load the API
  */
-//app.use( '/',require('./api') );
+app.use( '/', require('./api') );
 
 /**
  * Angular Application
