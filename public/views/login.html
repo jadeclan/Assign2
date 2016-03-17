@@ -1,30 +1,29 @@
 
 <div layout="column">
-
-
-    <md-content class="md-no-momentum">
-    <div flex="50">
-        <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <!--<label>Username:</label>-->
-            <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-            <input ng-model="employee.username" type="text" placeholder="Username (required)" ng-required="true">
-        </md-input-container>
-    </div>
-    <div flex="50">
-        <md-input-container class="md-block">
-            <!-- Use floating placeholder instead of label -->
-            <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-            <input ng-model="employee.password" type="password" placeholder="Password (required)" ng-required="true">
-        </md-input-container>
-    </div>
-    <div flex="50">
-        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button class="md-raised">Login</md-button>
-        </section>
-    </div>
-    </md-content>
-
+    <form ng-submit="login()">
+        <md-content class="md-no-momentum">
+        <div flex="50">
+            <md-input-container class="md-icon-float md-block">
+                <!-- Use floating label instead of placeholder -->
+                <!--<label>Username:</label>-->
+                <!--<md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>-->
+                <input ng-model="employee.username" type="text" placeholder="Username (required)" ng-required="true" required>
+            </md-input-container>
+        </div>
+        <div flex="50">
+            <md-input-container class="md-block">
+                <!-- Use floating placeholder instead of label -->
+                <!--<md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>-->
+                <input ng-model="employee.password" type="password" placeholder="Password (required)" ng-required="true" required>
+            </md-input-container>
+        </div>
+        <div flex="50">
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <md-button type="submit" class="md-raised">Login</md-button>
+            </section>
+        </div>
+        </md-content>
+    </form>
 </div>
 
 
