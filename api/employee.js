@@ -14,7 +14,7 @@
 
 var router = require('express').Router();
 var authenticate = require('../middleware/authentication');
-var Employee = ('../models/employee');
+var Employee = require('../models/employee');
 
 
 /**
