@@ -58,4 +58,12 @@ md-list{
     background-color: #ECEFF1;
 }
 
-.ng-scope { height: 100%; }
+.ng-scope {
+    height: 100%;
+    width: 100%;
+}
+
+iframe{
+    width: 100%;
+    height: 800px;
+}
