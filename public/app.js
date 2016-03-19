@@ -65,4 +65,10 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                 templateUrl: 'views/books.html',
                 controller: 'booksController'
             })
+
+            .state('dashboard.documentation', {
+                url: '/documentation',
+                templateUrl: 'views/documentation.html'
+                //controller: 'documentationController'
+            })
     }).run();
