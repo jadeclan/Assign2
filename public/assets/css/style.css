@@ -88,3 +88,26 @@ md-tabs .md-tab{
 #welcome{
     margin-bottom: 0;
 }
+
+
+.employeeCardHeader{
+    background-color: #006064;
+    color: white;
+}
+
+.md-button.md-raised{
+    background-color: #FF5722;
+    color: #fff;
+}
+
+.md-button:hover{
+    color: black;
+}
+
+#employeeCard{
+    margin-top: 2%;
+}
+
+#employeeIMG{
+    border: 1px inset #FF5722;
+}
