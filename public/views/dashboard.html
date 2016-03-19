@@ -5,7 +5,8 @@
                     md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop>
             <md-toolbar id="topsidebar" layout-align="space-around center">
                 <span><a href="#dashboard" id="powbLogo">Pow-B</a></span>
-                <h4>Welcome {{employee.firstname}} {{employee.lastname}}</h4>
+                <h4 id="welcome">Welcome</h4>
+                <h4 id="employeeName">{{employee.firstname}} {{employee.lastname}}</h4>
             </md-toolbar>
             <md-content id="bottomsidebar" layout="column" flex layout-padding>
                 <md-list>

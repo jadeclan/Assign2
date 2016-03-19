@@ -79,3 +79,12 @@ md-tabs md-ink-bar{
 md-tabs .md-tab{
     color: #006064;
 }
+
+#employeeName{
+    margin-top: 0;
+    margin-bottom: 26px;
+}
+
+#welcome{
+    margin-bottom: 0;
+}
