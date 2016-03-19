@@ -71,4 +71,84 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                 templateUrl: 'views/documentation.html'
                 //controller: 'documentationController'
             })
-    }).run();
+    }).run(function($rootScope, $state, $stateParams) {
+
+        var fadeIn = false;
+
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+
+        /*
+
+        // State change event handler
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+
+            var frame, width, height;
+
+            // Bypass event handler (prevents recursion)
+            if ($rootScope.stateChangeBypass) {
+                $rootScope.stateChangeBypass = false;
+                return;
+            }
+
+            if (toState.parent != fromState.parent && toState.parent === 'app') {
+                // Transition from Splash to App
+                frame = $('#frame');
+
+                // Cancel event
+                event.preventDefault();
+
+                // 60% x 80% of device
+                width = ($(document).width() * 0.6) - frame.width();
+                height = ($(document).height() * 0.8) - frame.height();
+
+                frame.animate({
+                    left: '-=' + width / 2 + 'px',
+                    width: '+=' + width + 'px',
+                    height: '+=' + height + 'px'
+                }, 1500);
+
+                // Transition after fadeout
+                $('#splash').fadeOut(750).promise().done(function () {
+                    $rootScope.stateChangeBypass = true;
+                    $state.go(toState, toParams);
+                    fadeIn = true;
+                });
+            } else if (toState.name === 'splash' && fromState.parent === 'app') {
+                // Transition from App to Splash
+                frame = $('#frame');
+
+                // Cancel event
+                event.preventDefault();
+
+                // Resize back to 400x600
+                width = frame.width() - 392;
+                height = frame.height() - 592;
+
+                frame.animate({
+                    left: '+=' + width / 2 + 'px',
+                    width: '-=' + width + 'px',
+                    height: '-=' + height + 'px'
+                }, 1500);
+
+                // Transition after fadeout
+                $('#app').fadeOut(1000).promise().done(function () {
+                    $rootScope.stateChangeBypass = true;
+                    $state.go(toState, toParams);
+                    fadeIn = true;
+                });
+            }
+        });
+
+        $rootScope.$on('$viewContentLoaded', function (event) {
+            if (fadeIn) {
+                // this works due to #splash and #app never being loaded at the same time...
+                // one call will simply do nothing
+                $('#app').hide().fadeIn(750);
+                $('#splash').hide().fadeIn(500);
+
+                fadeIn = false;
+            }
+        })
+        */
+    });
