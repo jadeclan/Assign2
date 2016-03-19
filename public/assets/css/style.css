@@ -67,3 +67,15 @@ iframe{
     width: 99%;
     height: 800px;
 }
+
+md-tabs .md-tab.md-active {
+    color: #f50057;
+}
+
+md-tabs md-ink-bar{
+    background-color: #f50057;
+}
+
+md-tabs .md-tab{
+    color: #006064;
+}
