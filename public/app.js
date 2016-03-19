@@ -36,8 +36,8 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
             /*dashboard page's state and nested views*/
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard.html'
-                //controller: 'dashboardController'
+                templateUrl: 'views/dashboard.html',
+                controller: 'DashboardController'
             })
 
             /*nested view on the dashboard page
