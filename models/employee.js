@@ -67,14 +67,11 @@ var employeeSchema = new mongoose.Schema({
 employeeSchema.methods.createToken = function(){
     var employee = this;
 
-    var token = jwt.sign({
+    return jwt.sign({
         sub: employee._id,
         iat: moment().unix(),
         exp: moment().add(14, 'days').unix()
     }, config.AUTH_SECRET_KEY );
-
-    return employee.save()
-        .then( function() { return token; });
 };
 
 employeeSchema.statics.Authenticate = function(username, password){
