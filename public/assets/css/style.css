@@ -115,3 +115,9 @@ md-tabs .md-tab{
 #app[style]{
     display: flex !important;
 }
+p.about{ text-indent: 50px;
+}
+p.about::first-letter {
+    font-size: 200%;
+    color: #8A2BE2;
+}
