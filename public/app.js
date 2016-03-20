@@ -33,6 +33,11 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                 controller: 'AuthenticationController'
             })
 
+            .state('logout', {
+                url: '/logout',
+                controller: 'LogoutController'
+            })
+
             /*dashboard page's state and nested views*/
             .state('dashboard', {
                 url: '/dashboard',
