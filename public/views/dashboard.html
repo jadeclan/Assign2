@@ -1,4 +1,4 @@
-<div id="app" layout="column" ng-cloak>
+<div id="app" layout="column">
     <section layout="row" flex>
 
         <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left"
@@ -11,13 +11,16 @@
             <md-content id="bottomsidebar" layout="column" flex layout-padding>
                 <md-list>
                     <md-list-item>
-                        <span><a href="#/dashboard">Dashboard</a></span>
+                        <span><a ui-sref="dashboard">Dashboard</a></span>
                     </md-list-item>
                     <md-list-item>
-                        <span><a href="#dashboard/about">About</a></span>
+                        <span><a ui-sref="dashboard.about">About</a></span>
                     </md-list-item>
                     <md-list-item>
-                        <span><a href="#dashboard/documentation">Documentation</a></span>
+                        <span><a ui-sref="dashboard.documentation">Documentation</a></span>
+                    </md-list-item>
+                    <md-list-item>
+                        <span><a ui-sref="logout">Logout</a></span>
                     </md-list-item>
                 </md-list>
             </md-content>

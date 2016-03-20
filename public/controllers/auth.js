@@ -2,14 +2,17 @@
  * Created by nwalker on 3/11/16.
  */
 
-app.controller('AuthenticationController', function($scope, $location, $auth){
+app
 
-    $scope.showLogin = true;
+    .controller('AuthenticationController', function($scope, $state, $auth){
 
+        $scope.showLogin = true;
+
+        // this is for google/facebook/twitter etc OAUTH (remove? we could show off and implement)
         $scope.authenticate = function(provider) {
             $auth.authenticate(provider)
                 .then(function() {
-                    $location.path('/dashboard');
+                    $state.go('dashboard');
                 })
                 .catch(function(res) {
                     console.log(res);
@@ -19,21 +22,22 @@ app.controller('AuthenticationController', function($scope, $location, $auth){
         $scope.login = function() {
             $auth.login($scope.employee)
                 .then(function() {
-                    $location.path('/dashboard');
+                    $state.go('dashboard');
                 })
                 .catch(function() {
-                    $("#login").effect('shake');
+                    $("#splash").effect('shake');
                 });
         };
 
     })
 
-    .controller('LogoutController', function($location, $auth) {
+
+    .controller('LogoutController', function($state, $auth) {
         if (!$auth.isAuthenticated())
-            $location.path('/login');
+            $state.go('login');
 
         $auth.logout()
             .then(function() {
-                $location.path('/login');
+                $state.go('login');
             });
-});
+    });

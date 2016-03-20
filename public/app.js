@@ -73,17 +73,11 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
             })
     }).run(function($rootScope, $state, $stateParams) {
 
-        var fadeIn = false;
-
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-
-
         // State change event handler
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-
-            var frame, width, height;
 
             // Bypass event handler (prevents recursion)
             if ($rootScope.stateChangeBypass) {
@@ -92,50 +86,15 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
             }
 
             if (toState.name != fromState.name && toState.name === 'dashboard') {
-                // Transition from Splash to App
-                frame = $('#frame');
-
                 // Cancel event
                 event.preventDefault();
-
-                frame.animate({
-                }, 1500);
 
                 // Transition after fadeout
                 $('#splash').fadeOut(750).promise().done(function () {
                     $rootScope.stateChangeBypass = true;
                     $state.go(toState, toParams);
-                    fadeIn = true;
                 });
 
-            } else if (toState.name === 'splash' && fromState.parent === 'app') {
-                // Transition from App to Splash
-                frame = $('#frame');
-
-                // Cancel event
-                event.preventDefault();
-
-                frame.animate({
-                }, 1500);
-
-                // Transition after fadeout
-                $('#app').fadeOut(1500).promise().done(function () {
-                    $rootScope.stateChangeBypass = true;
-                    $state.go(toState, toParams);
-                    fadeIn = true;
-                });
             }
         });
-
-        $rootScope.$on('$viewContentLoaded', function (event) {
-            if (fadeIn) {
-                // this works due to #splash and #app never being loaded at the same time...
-                // one call will simply do nothing
-                $('#app').hide().fadeIn(1000);
-                $('#splash').hide().fadeIn(1000);
-
-                fadeIn = false;
-            }
-        })
-
     });
