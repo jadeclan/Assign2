@@ -78,7 +78,7 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-        /*
+
 
         // State change event handler
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -91,21 +91,14 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                 return;
             }
 
-            if (toState.parent != fromState.parent && toState.parent === 'app') {
+            if (toState.name != fromState.name && toState.name === 'dashboard') {
                 // Transition from Splash to App
                 frame = $('#frame');
 
                 // Cancel event
                 event.preventDefault();
 
-                // 60% x 80% of device
-                width = ($(document).width() * 0.6) - frame.width();
-                height = ($(document).height() * 0.8) - frame.height();
-
                 frame.animate({
-                    left: '-=' + width / 2 + 'px',
-                    width: '+=' + width + 'px',
-                    height: '+=' + height + 'px'
                 }, 1500);
 
                 // Transition after fadeout
@@ -114,6 +107,7 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                     $state.go(toState, toParams);
                     fadeIn = true;
                 });
+
             } else if (toState.name === 'splash' && fromState.parent === 'app') {
                 // Transition from App to Splash
                 frame = $('#frame');
@@ -121,18 +115,11 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                 // Cancel event
                 event.preventDefault();
 
-                // Resize back to 400x600
-                width = frame.width() - 392;
-                height = frame.height() - 592;
-
                 frame.animate({
-                    left: '+=' + width / 2 + 'px',
-                    width: '-=' + width + 'px',
-                    height: '-=' + height + 'px'
                 }, 1500);
 
                 // Transition after fadeout
-                $('#app').fadeOut(1000).promise().done(function () {
+                $('#app').fadeOut(1500).promise().done(function () {
                     $rootScope.stateChangeBypass = true;
                     $state.go(toState, toParams);
                     fadeIn = true;
@@ -144,11 +131,11 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
             if (fadeIn) {
                 // this works due to #splash and #app never being loaded at the same time...
                 // one call will simply do nothing
-                $('#app').hide().fadeIn(750);
-                $('#splash').hide().fadeIn(500);
+                $('#app').hide().fadeIn(1000);
+                $('#splash').hide().fadeIn(1000);
 
                 fadeIn = false;
             }
         })
-        */
+
     });

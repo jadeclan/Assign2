@@ -111,3 +111,7 @@ md-tabs .md-tab{
 #employeeIMG{
     border: 1px inset #FF5722;
 }
+
+#app[style]{
+    display: flex !important;
+}
