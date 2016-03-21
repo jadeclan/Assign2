@@ -1,4 +1,4 @@
-#Mean Stack Implementation ![GitHubLogo](public/assets/images/logo.jpg
+#Mean Stack Implementation ![GitHubLogo](public/assets/images/logo.jpg)
 ####As partial fulfilment of the requirements for COMP4513
 ####For the BCIS Degree at Mount Royal University
 ####Course Professor:&nbsp;&nbsp;&nbsp;_**Randy Connolly**_
