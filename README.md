@@ -1,6 +1,4 @@
-# Assign2
-
-Mean Stack Implementation ![GitHubLogo](app/views/images/logo.jpg)
+#Mean Stack Implementation ![GitHubLogo](app/views/images/logo.jpg)
 =========================
 
 ####As partial fulfilment of the requirements for COMP4513
