@@ -7,25 +7,25 @@
             </a>
         </th>
         <th class="col-md-1">
-            <a href="" ng-click="sortField='todo.priority'; sortReverse = !sortReverse">Title
+            <a href="" ng-click="sortField='todo.priority'; sortReverse = !sortReverse">Priority
                 <span ng-show="sortField=='todo.priority'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
             </a>
         </th>
         <th class="col-md-01">
-            <a href="" ng-click="sortField='todo.status'; sortReverse = !sortReverse">Date
+            <a href="" ng-click="sortField='todo.status'; sortReverse = !sortReverse">Status
                 <span ng-show="sortField=='todo.status'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
             </a>
         </th>
         <th class="col-md-07">
-            <a href="" ng-click="sortField='todo.description'; sortReverse = !sortReverse">Category
+            <a href="" ng-click="sortField='todo.description'; sortReverse = !sortReverse">Description
                 <span ng-show="sortField=='todo.description'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
             </a>
         </th>
-        <th class="col-md-1">
-            Update Fields
+        <th class="col-md-1" style="color:#bf360c">
+            Update
         </th>
-        <th class="col-md-1">
-            Delete Entry
+        <th class="col-md-1" style="color:#bf360c">
+            Delete
         </th>
 
     </tr>
@@ -36,8 +36,8 @@
         <td>{{ t.priority }}</td>
         <td>{{ t.status }}</td>
         <td>{{ t.description }}</td>
-        <td>Update<input type="checkbox" /></td>
-        <td>Delete<input type="checkbox" /></td>
+        <td><input type="checkbox" /></td>
+        <td><input type="checkbox" /></td>
     </tr>
     </tbody>
     <tfoot>
@@ -47,8 +47,8 @@
             <td></td>
             <td>
                 <span>
-                <button type="submit" id="create">Create new todo</button>
-                <button type="submit" id="delete">Delete Entries</button>
+                <button type="submit" id="create">Create new to do</button>
+                <button type="submit" id="delete">Delete Selected Entries</button>
                 </span>
             </td>
         </tr>
