@@ -10,3 +10,11 @@ app.controller('DashboardController', function($scope, $http){
             $scope.employee = employee;
         });
 });
+
+app.controller('booksController', function($scope, $http){
+    //$http.get('/employeeDetails')
+    //    .success(function(employee) {
+    //        console.log(employee);
+    //        $scope.employee = employee;
+    //    });
+});

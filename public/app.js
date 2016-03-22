@@ -67,8 +67,8 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
 
             .state('dashboard.books', {
                 url: '/books',
-                templateUrl: 'views/books.html'
-                //controller: 'booksController'
+                templateUrl: 'views/books.html',
+                controller: 'booksController'
             })
 
             .state('dashboard.documentation', {
