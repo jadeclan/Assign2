@@ -1,0 +1,28 @@
+<table>
+    <thead>
+    <tr>
+        <th class="col-md-01">
+            <a href="" ng-click="sortField='isbn10'; sortReverse = !sortReverse">ISBN 10
+                <span ng-show="sortField=='isbn10'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+            </a>
+        </th>
+        <th class="col-md-10">
+            <a href="" ng-click="sortField='title'; sortReverse = !sortReverse">Title
+                <span ng-show="sortField=='title'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+            </a>
+        </th>
+        <th class="col-md-01">
+            <a href="" ng-click="sortField='category'; sortReverse = !sortReverse">Category
+                <span ng-show="sortField=='category'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+            </a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat='e in employee.books | orderBy: sortField:sortReverse'>
+        <td>{{ e.isbn10 }}</td>
+        <td>{{ e.title }}</td>
+        <td>{{ e.category }}</td>
+    </tr>
+    </tbody>
+</table>
