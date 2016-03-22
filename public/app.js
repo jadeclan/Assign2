@@ -55,8 +55,8 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
 
             .state('dashboard.toDo', {
                 url: '/toDo',
-                templateUrl: 'views/toDo.html',
-                controller: 'toDoController'
+                templateUrl: 'views/toDo.html'
+                //controller: 'toDoController'
             })
 
             .state('dashboard.messages', {

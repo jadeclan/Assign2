@@ -1,0 +1,56 @@
+<table>
+    <thead>
+    <tr>
+        <th class="col-md-01">
+            <a href="" ng-click="sortField='todo.date'; sortReverse = !sortReverse">Date
+                <span ng-show="sortField=='todo.date'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+            </a>
+        </th>
+        <th class="col-md-1">
+            <a href="" ng-click="sortField='todo.priority'; sortReverse = !sortReverse">Title
+                <span ng-show="sortField=='todo.priority'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+            </a>
+        </th>
+        <th class="col-md-01">
+            <a href="" ng-click="sortField='todo.status'; sortReverse = !sortReverse">Date
+                <span ng-show="sortField=='todo.status'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+            </a>
+        </th>
+        <th class="col-md-07">
+            <a href="" ng-click="sortField='todo.description'; sortReverse = !sortReverse">Category
+                <span ng-show="sortField=='todo.description'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+            </a>
+        </th>
+        <th class="col-md-1">
+            Update Fields
+        </th>
+        <th class="col-md-1">
+            Delete Entry
+        </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat='t in employee.todo | orderBy: sortField:sortReverse'>
+        <td>{{ t.date }}</td>
+        <td>{{ t.priority }}</td>
+        <td>{{ t.status }}</td>
+        <td>{{ t.description }}</td>
+        <td>Update<input type="checkbox" /></td>
+        <td>Delete<input type="checkbox" /></td>
+    </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <span>
+                <button type="submit" id="create">Create new todo</button>
+                <button type="submit" id="delete">Delete Entries</button>
+                </span>
+            </td>
+        </tr>
+    </tfoot>
+</table>
