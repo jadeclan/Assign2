@@ -18,3 +18,7 @@ app.controller('booksController', function($scope, $http){
     //        $scope.employee = employee;
     //    });
 });
+
+app.controller('messagesController', function($scope, $http){
+
+});
