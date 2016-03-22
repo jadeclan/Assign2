@@ -9,7 +9,7 @@
             <md-list-item class="md-3-line" ng-repeat="e in employee.messages | orderBy: 'date'">
                 <div class="md-list-item-text" layout="column">
                     <h3>{{e.contact.firstname}} {{e.contact.lastname}}</h3>
-                    <md-button ng-click="showGreeting(e.contact)">{{e.contact.university.name}}</md-button>
+                    <md-button ng-click="showGreeting(e.contact.university)">{{e.contact.university.name}}</md-button>
                     <h4>Date: {{e.date}}</h4>
                     <h4>Category: {{e.category}}</h4>
                     <p>{{e.content}}</p>

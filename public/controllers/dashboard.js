@@ -25,13 +25,14 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
     $scope.hasAlert = function() { return !!alert };
 
     function showCustomGreeting(contact) {
+        console.log(contact);
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
             preserveScope: true,
             template: '<md-dialog>' +
             '  <md-dialog-content>' +
-            '     Hi There {{contact.university.name}}' +
+            '     Hi There {{ contact.name }}' +
             '  </md-dialog-content>' +
             '</md-dialog>',
             controller: function DialogController($scope, $mdDialog) {
