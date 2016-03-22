@@ -19,6 +19,27 @@ app.controller('booksController', function($scope, $http){
     //    });
 });
 
-app.controller('messagesController', function($scope, $http){
+app.controller('messagesController', function($scope, $http, $mdDialog){
+    var alert;
+    $scope.showGreeting = showCustomGreeting;
+    $scope.hasAlert = function() { return !!alert };
+
+    function showCustomGreeting(contact) {
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            scope: $scope,
+            preserveScope: true,
+            template: '<md-dialog>' +
+            '  <md-dialog-content>' +
+            '     Hi There {{contact.university.name}}' +
+            '  </md-dialog-content>' +
+            '</md-dialog>',
+            controller: function DialogController($scope, $mdDialog) {
+                $scope.closeDialog = function() {
+                    $mdDialog.hide();
+                }
+            }
+        });
+    }
 
 });

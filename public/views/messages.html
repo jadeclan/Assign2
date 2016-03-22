@@ -1,15 +1,3 @@
-<!--<md-list>-->
-    <!--<md-list-item class="md-2-line" ng-repeat="e in employee.messages">-->
-        <!--<div class="md-list-item-text">-->
-            <!--<h3>Name: {{e.contact.firstname}} {{e.contact.lastname}}</h3>-->
-            <!--<h4>University: {{e.contact.university.name}}</h4>-->
-            <!--<h4>Date: {{e.date}}</h4>-->
-            <!--<h4>Category: {{e.category}}</h4>-->
-            <!--<h4>Message: {{e.content}}</h4>-->
-        <!--</div>-->
-    <!--</md-list-item>-->
-<!--</md-list>-->
-
 <md-card flex="50">
     <md-card-title>
         <md-card-title-text layout="row" layout-align="center center">
@@ -21,7 +9,7 @@
             <md-list-item class="md-3-line" ng-repeat="e in employee.messages | orderBy: 'date'">
                 <div class="md-list-item-text" layout="column">
                     <h3>{{e.contact.firstname}} {{e.contact.lastname}}</h3>
-                    <h4>{{e.contact.university.name}}</h4>
+                    <md-button ng-click="showGreeting(e.contact)">{{e.contact.university.name}}</md-button>
                     <h4>Date: {{e.date}}</h4>
                     <h4>Category: {{e.category}}</h4>
                     <p>{{e.content}}</p>
