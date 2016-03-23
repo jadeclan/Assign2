@@ -10,33 +10,23 @@
                     <h2>Address</h2>
                     <p>
                         <i>{{ contact.address }}<br>
-                        {{ contact.city }}, {{ contact.state }} <br>
-                        {{ contact.zip }}</i> <br>
+                           {{ contact.city }}, {{ contact.state }} <br>
+                           {{ contact.zip }}</i> <br>
                     </p>
+                    <md-divider></md-divider>
+                    <h2>Additional Information</h2>
+                    <b>Website: </b> {{ contact.website }} <br>
                 </md-card-content>
             </md-card>
-
-
             <md-card>
                 <md-card-content>
                     <h2>Location</h2>
                     <p>
-                        <b>Latitude: </b> {{ contact.latitude }} <br>
-                        <b>Longitude: </b> {{ contact.longitude }}
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{contact.latitude}},{{contact.longitude}}&zoom=13&size=250x250&maptype=hybrid&markers=color:red%7Clabel:S%7C{{contact.latitude}},{{contact.longitude}}&key=AIzaSyCId0Q2FUMjLkN40W5Rl2qaUXACu_uaY5M"><br>
+                        <b>{{ contact.latitude }}, {{ contact.longitude }}</b>
                     </p>
                 </md-card-content>
             </md-card>
-        </div>
-        <md-divider></md-divider>
-        <div class="md-dialog-content" layout-xs="column" layout-gt-xs="row">
-            <div flex>
-                    <h2>Additional Information</h2>
-                    <p>
-                        <b>Website: </b> {{ contact.website }} <br>
-                    </p>
-            </div>
-
-
         </div>
     </md-dialog-content>
 </md-dialog>
