@@ -4,8 +4,8 @@
             <span class="md-headline">{{employee.firstname}}'s Book List</span>
         </md-card-title-text>
     </md-card-title>
-    <md-card-content id="cardPadding">
-        <div layout="row">
+    <md-card-content class="cardPadding">
+        <div layout="row" class="cardContent">
             <div flex="20">
                 <a href="" ng-click="sortField='isbn10'; sortReverse = !sortReverse">ISBN 10
                     <span ng-show="sortField=='isbn10'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
@@ -22,7 +22,7 @@
                 </a>
             </div>
         </div>
-        <md-divider></md-divider>
+        <md-divider class="dividerMargin"></md-divider>
         <div layout="row" ng-repeat='e in employee.books | orderBy: sortField:sortReverse'>
             <div flex="20">{{ e.isbn10 }}</div>
             <div flex="60">{{ e.title }}</div>

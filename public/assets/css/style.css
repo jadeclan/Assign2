@@ -96,7 +96,7 @@ md-tabs .md-tab{
 }
 
 .md-button.md-raised{
-    background-color: #FF5722;
+    background-color: #E64A19;
     color: #fff;
 }
 
@@ -140,6 +140,18 @@ md-list-item.md-3-line{
     font-size: 14px;
 }
 
-#cardPadding{
+.cardPadding{
     padding-top: 2%;
+}
+
+.fontColor{
+    color:#bf360c
+}
+
+.cardContent{
+    padding-bottom: 1%;
+}
+
+.dividerMargin{
+    margin-bottom: 1%;
 }

@@ -1,52 +1,49 @@
 <md-card flex="100">
-    <md-card-title>
+    <md-card-title class="subheader">
         <md-card-title-text layout="row" layout-align="center center">
             <span class="md-headline">{{employee.firstname}}'s To Do List</span>
         </md-card-title-text>
     </md-card-title>
-    <div layout="row">
-        <div flex="10">
-            <a href="" ng-click="sortField='todo.date'; sortReverse = !sortReverse">Date
-                <span ng-show="sortField=='todo.date'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
-            </a>
-        </div>
-        <div flex="10">
-            <a href="" ng-click="sortField='todo.priority'; sortReverse = !sortReverse">Priority
-                <span ng-show="sortField=='todo.priority'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
-            </a>
-        </div>
-        <div flex="15">
-            <a href="" ng-click="sortField='todo.status'; sortReverse = !sortReverse">Status
-                <span ng-show="sortField=='todo.status'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
-            </a>
-        </div>
-        <div flex="45">
-            <a href="" ng-click="sortField='todo.description'; sortReverse = !sortReverse">Description
-                <span ng-show="sortField=='todo.description'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
-            </a>
-        </div>
-        <div flex="10" style="color:#bf360c">
-            Update
-        </div>
-        <div flex style="color:#bf360c">
-            Delete
-        </div>
-    </div>
-    <md-divider></md-divider>
-    <div layout="row" ng-repeat='t in employee.todo | orderBy: sortField:sortReverse'>
-        <div flex="10">{{ t.date | date:'shortDate'}}</div>
-        <div flex="10">{{ t.priority }}</div>
-        <div flex="15">{{ t.status }}</div>
-        <div flex="45">{{ t.description }}</div>
-        <div flex="10"><md-checkbox/></div>
-        <div flex><md-checkbox/></div>
-    </div>
-    <div layout="row">
-        <div flex="35"></div>
-        <div flex>
-            <span>
-                <md-button ng-click="" style="color:#bf360c">Create a new To Do</md-button>
+    <md-card-content class="cardPadding">
+        <div layout="row" class="cardContent">
+            <div flex="10">
+                <a href="" ng-click="sortField='todo.date'; sortReverse = !sortReverse">Date
+                    <span ng-show="sortField=='todo.date'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+                </a>
+            </div>
+            <div flex="10">
+                <a href="" ng-click="sortField='todo.priority'; sortReverse = !sortReverse">Priority
+                    <span ng-show="sortField=='todo.priority'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+                </a>
+            </div>
+            <div flex="15">
+                <a href="" ng-click="sortField='todo.status'; sortReverse = !sortReverse">Status
+                    <span ng-show="sortField=='todo.status'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+                </a>
+            </div>
+            <div flex="45">
+                <a href="" ng-click="sortField='todo.description'; sortReverse = !sortReverse">Description
+                    <span ng-show="sortField=='todo.description'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
+                </a>
+            </div>
+            <span flex="10" class="fontColor">
+                Update
+            </span>
+            <span flex class="fontColor">
+                Delete
             </span>
         </div>
-    </div>
+        <md-divider class="dividerMargin"></md-divider>
+        <div layout="row" ng-repeat='t in employee.todo | orderBy: sortField:sortReverse'>
+            <div flex="10">{{ t.date | date:'shortDate'}}</div>
+            <div flex="10">{{ t.priority }}</div>
+            <div flex="15">{{ t.status }}</div>
+            <div flex="45">{{ t.description }}</div>
+            <div flex="10"><md-checkbox/></div>
+            <div flex><md-checkbox/></div>
+        </div>
+        <div layout="row" layout-align="center center">
+            <md-button ng-click="" class="md-button md-raised">Create a new To Do</md-button>
+        </div>
+    </md-card-content>
 </md-card>
