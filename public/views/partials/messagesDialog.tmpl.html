@@ -1,3 +1,10 @@
+<style>
+    #map{
+        height: 300px;
+        width: 300px;
+    }
+</style>
+
 <md-dialog style="max-width:800px;max-height:810px; ">
     <md-toolbar>
         <div layout="row" layout-align="center center" class="md-toolbar-tools subheader">{{ contact.name }}</div>
@@ -21,12 +28,41 @@
             <md-card>
                 <md-card-content>
                     <h2>Location</h2>
-                    <p>
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{contact.latitude}},{{contact.longitude}}&zoom=13&size=250x250&maptype=hybrid&markers=color:red%7Clabel:S%7C{{contact.latitude}},{{contact.longitude}}&key=AIzaSyCId0Q2FUMjLkN40W5Rl2qaUXACu_uaY5M"><br>
-                        <b>{{ contact.latitude }}, {{ contact.longitude }}</b>
-                    </p>
+                    <div id="map"></div>
+                    <b><span id="latitude">{{ contact.latitude }}</span>, <span id="longitude">{{ contact.longitude }}</span></b>
                 </md-card-content>
             </md-card>
         </div>
     </md-dialog-content>
 </md-dialog>
+
+
+<script>
+    var map;
+    function initMap() {
+        var latitude = document.getElementById('latitude').innerText;
+        var longitude = document.getElementById('longitude').innerText;
+        if (latitude === null || latitude == '') {
+            document.getElementById('map').innerHTML = "<h3>N/A</h3>";
+        } else if (longitude === null || longitude == '') {
+            document.getElementById('map').innerHTML = "<h3>N/A</h3>";
+        } else {
+            var location = {lat: Number(latitude), lng: Number(longitude)};
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: location,
+                zoom: 8
+            });
+            addMarker(location, map);
+
+            function addMarker(location, map) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+            }
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCId0Q2FUMjLkN40W5Rl2qaUXACu_uaY5M&callback=initMap"
+        async defer></script>
