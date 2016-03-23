@@ -1,4 +1,9 @@
 <md-card flex="50">
+    <md-card-title>
+        <md-card-title-text layout="row" layout-align="center center">
+            <span class="md-headline">{{employee.firstname}}'s Book List</span>
+        </md-card-title-text>
+    </md-card-title>
     <div layout="row">
         <div flex="20">
             <a href="" ng-click="sortField='isbn10'; sortReverse = !sortReverse">ISBN 10
