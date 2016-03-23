@@ -22,7 +22,7 @@
                     </p>
                     <md-divider></md-divider>
                     <h2>Additional Information</h2>
-                    <b>Website: </b> {{ contact.website }} <br>
+                    <b>Website: </b> <a href="http://{{ contact.website }}">{{ contact.website }}</a> <br>
                 </md-card-content>
             </md-card>
             <md-card>
@@ -57,6 +57,7 @@
             function addMarker(location, map) {
                 var marker = new google.maps.Marker({
                     position: location,
+                    animation: google.maps.Animation.DROP,
                     map: map
                 });
 
@@ -64,5 +65,4 @@
         }
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCId0Q2FUMjLkN40W5Rl2qaUXACu_uaY5M&callback=initMap"
-        async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCId0Q2FUMjLkN40W5Rl2qaUXACu_uaY5M&callback=initMap" async defer></script>

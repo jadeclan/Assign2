@@ -127,9 +127,15 @@ p.about::first-letter {
 
 md-list-item.md-3-line{
     padding: 0;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 #messageList{
     max-height: 522px;
     overflow-y: auto;
+}
+
+.messageUniLink{
+    font-size: 14px;
 }

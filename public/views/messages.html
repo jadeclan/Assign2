@@ -1,5 +1,5 @@
 <md-card flex="50">
-    <md-card-title>
+    <md-card-title class="subheader">
         <md-card-title-text layout="row" layout-align="center center">
             <span class="md-headline">Messages</span>
         </md-card-title-text>
@@ -8,10 +8,12 @@
         <md-list flex>
             <md-list-item class="md-3-line" ng-repeat="e in employee.messages | orderBy: 'date'">
                 <div class="md-list-item-text" layout="column">
-                    <h3>{{e.contact.firstname}} {{e.contact.lastname}}</h3>
-                    <md-button ng-click="showGreeting(e.contact.university)">{{e.contact.university.name}}</md-button>
-                    <h4>Date: {{e.date}}</h4>
-                    <h4>Category: {{e.category}}</h4>
+                    <div layout="column" layout-align="center center">
+                        <h3>{{e.contact.firstname}} {{e.contact.lastname}}</h3>
+                        <a role="button" class="messageUniLink" ng-click="showGreeting(e.contact.university)">{{e.contact.university.name}}</a>
+                    </div>
+                    <h4><b>Date:</b> {{e.date}}</h4>
+                    <h4><b>Category:</b> {{e.category}}</h4>
                     <p>{{e.content}}</p>
                 </div>
                 <md-divider></md-divider>
