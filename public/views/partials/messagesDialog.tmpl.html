@@ -1,5 +1,42 @@
-<md-dialog>
+<md-dialog style="max-width:800px;max-height:810px; ">
+    <md-toolbar>
+        <div layout="row" layout-align="center center" class="md-toolbar-tools subheader">{{ contact.name }}</div>
+        <span flex></span>
+    </md-toolbar>
     <md-dialog-content>
-        Hi There {{ contact.name }}
+        <div class="md-dialog-content" layout-xs="column" layout-gt-xs="row">
+            <md-card>
+                <md-card-content>
+                    <h2>Address</h2>
+                    <p>
+                        <i>{{ contact.address }}<br>
+                        {{ contact.city }}, {{ contact.state }} <br>
+                        {{ contact.zip }}</i> <br>
+                    </p>
+                </md-card-content>
+            </md-card>
+
+
+            <md-card>
+                <md-card-content>
+                    <h2>Location</h2>
+                    <p>
+                        <b>Latitude: </b> {{ contact.latitude }} <br>
+                        <b>Longitude: </b> {{ contact.longitude }}
+                    </p>
+                </md-card-content>
+            </md-card>
+        </div>
+        <md-divider></md-divider>
+        <div class="md-dialog-content" layout-xs="column" layout-gt-xs="row">
+            <div flex>
+                    <h2>Additional Information</h2>
+                    <p>
+                        <b>Website: </b> {{ contact.website }} <br>
+                    </p>
+            </div>
+
+
+        </div>
     </md-dialog-content>
 </md-dialog>
