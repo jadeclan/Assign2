@@ -26,6 +26,7 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
 
     function showCustomGreeting(contact) {
         console.log(contact);
+        $scope.contact = contact;
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
