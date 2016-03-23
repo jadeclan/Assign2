@@ -31,11 +31,7 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
             clickOutsideToClose: true,
             scope: $scope,
             preserveScope: true,
-            template: '<md-dialog>' +
-            '  <md-dialog-content>' +
-            '     Hi There {{ contact.name }}' +
-            '  </md-dialog-content>' +
-            '</md-dialog>',
+            templateUrl: '/views/partials/messagesDialog.tmpl.html',
             controller: function DialogController($scope, $mdDialog) {
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
