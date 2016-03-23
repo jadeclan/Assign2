@@ -139,3 +139,7 @@ md-list-item.md-3-line{
 .messageUniLink{
     font-size: 14px;
 }
+
+#cardPadding{
+    padding-top: 2%;
+}
