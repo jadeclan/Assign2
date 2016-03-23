@@ -1,56 +1,52 @@
-<table>
-    <thead>
-    <tr>
-        <th class="col-md-01">
+<md-card flex="100">
+    <md-card-title>
+        <md-card-title-text layout="row" layout-align="center center">
+            <span class="md-headline">{{employee.firstname}}'s To Do List</span>
+        </md-card-title-text>
+    </md-card-title>
+    <div layout="row">
+        <div flex="10">
             <a href="" ng-click="sortField='todo.date'; sortReverse = !sortReverse">Date
                 <span ng-show="sortField=='todo.date'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
             </a>
-        </th>
-        <th class="col-md-1">
+        </div>
+        <div flex="10">
             <a href="" ng-click="sortField='todo.priority'; sortReverse = !sortReverse">Priority
                 <span ng-show="sortField=='todo.priority'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
             </a>
-        </th>
-        <th class="col-md-01">
+        </div>
+        <div flex="15">
             <a href="" ng-click="sortField='todo.status'; sortReverse = !sortReverse">Status
                 <span ng-show="sortField=='todo.status'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
             </a>
-        </th>
-        <th class="col-md-07">
+        </div>
+        <div flex="45">
             <a href="" ng-click="sortField='todo.description'; sortReverse = !sortReverse">Description
                 <span ng-show="sortField=='todo.description'" class="fa" ng-class="sortReverse ? 'fa-caret-up' : 'fa-caret-down'"></span>
             </a>
-        </th>
-        <th class="col-md-1" style="color:#bf360c">
+        </div>
+        <div flex="10" style="color:#bf360c">
             Update
-        </th>
-        <th class="col-md-1" style="color:#bf360c">
+        </div>
+        <div flex style="color:#bf360c">
             Delete
-        </th>
-
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat='t in employee.todo | orderBy: sortField:sortReverse'>
-        <td>{{ t.date }}</td>
-        <td>{{ t.priority }}</td>
-        <td>{{ t.status }}</td>
-        <td>{{ t.description }}</td>
-        <td><input type="checkbox" /></td>
-        <td><input type="checkbox" /></td>
-    </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <span>
-                <button type="submit" id="create">Create new to do</button>
-                <button type="submit" id="delete">Delete Selected Entries</button>
-                </span>
-            </td>
-        </tr>
-    </tfoot>
-</table>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" ng-repeat='t in employee.todo | orderBy: sortField:sortReverse'>
+        <div flex="10">{{ t.date | date:'shortDate'}}</div>
+        <div flex="10">{{ t.priority }}</div>
+        <div flex="15">{{ t.status }}</div>
+        <div flex="45">{{ t.description }}</div>
+        <div flex="10"><md-checkbox/></div>
+        <div flex><md-checkbox/></div>
+    </div>
+    <div layout="row">
+        <div flex="35"></div>
+        <div flex>
+            <span>
+                <md-button ng-click="" style="color:#bf360c">Create a new To Do</md-button>
+            </span>
+        </div>
+    </div>
+</md-card>
