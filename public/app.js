@@ -38,44 +38,54 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                 controller: 'LogoutController'
             })
 
+            .state('app', {
+                abstract: true,
+                templateUrl: 'views/app.html',
+                controller: function($scope, $http) {
+                    $http.get('/employeeDetails')
+                        .success(function(employee) {
+                            $scope.employee = employee;
+                        });
+                }
+            })
+
             /*dashboard page's state and nested views*/
-            .state('dashboard', {
+            .state('app.dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard.html',
-                controller: 'DashboardController'
+                views: {
+                    '': {
+                        templateUrl: 'views/dashboard.html'
+                    },
+                    'toDo@app.dashboard': {
+                        templateUrl: 'views/toDo.html'
+                        //controller: 'toDoController'
+                    },
+                    'messages@app.dashboard': {
+                        templateUrl: 'views/messages.html',
+                        controller: 'messagesController'
+                    },
+                    'books@app.dashboard': {
+                        templateUrl: 'views/books.html',
+                        controller: 'booksController'
+                    }
+                }
+            })
+
+            .state('app.documentation', {
+                url: '/documentation',
+                templateUrl: 'views/documentation.html'
+                //controller: 'documentationController'
             })
 
             /*nested view on the dashboard page
              *this will be the about page*/
-            .state('dashboard.about', {
+            .state('app.about', {
                 url: '/about',
                 templateUrl: 'views/about.html'
                 //controller: 'aboutController'
             })
 
-            .state('dashboard.toDo', {
-                url: '/toDo',
-                templateUrl: 'views/toDo.html'
-                //controller: 'toDoController'
-            })
 
-            .state('dashboard.messages', {
-                url: '/messages',
-                templateUrl: 'views/messages.html',
-                controller: 'messagesController'
-            })
-
-            .state('dashboard.books', {
-                url: '/books',
-                templateUrl: 'views/books.html',
-                controller: 'booksController'
-            })
-
-            .state('dashboard.documentation', {
-                url: '/documentation',
-                templateUrl: 'views/documentation.html'
-                //controller: 'documentationController'
-            })
     }).run(function($rootScope, $state, $stateParams) {
 
         $rootScope.$state = $state;

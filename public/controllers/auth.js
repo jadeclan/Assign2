@@ -12,7 +12,7 @@ app
         $scope.authenticate = function(provider) {
             $auth.authenticate(provider)
                 .then(function() {
-                    $state.go('dashboard');
+                    $state.go('app.dashboard');
                 })
                 .catch(function(res) {
                     console.log(res);
@@ -22,7 +22,7 @@ app
         $scope.login = function() {
             $auth.login($scope.employee)
                 .then(function() {
-                    $state.go('dashboard');
+                    $state.go('app.dashboard');
                 })
                 .catch(function() {
                     $("#splash").effect('shake');

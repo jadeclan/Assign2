@@ -1,0 +1,42 @@
+<div id="app" layout="column">
+    <section layout="row" flex>
+
+        <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop>
+            <md-toolbar id="topsidebar" layout-align="space-around center">
+                <span><a href="#dashboard" id="powbLogo">Pow-B</a></span>
+                <h4 id="welcome">Welcome</h4>
+                <h4 id="employeeName">{{employee.firstname}} {{employee.lastname}}</h4>
+            </md-toolbar>
+            <md-content id="bottomsidebar" layout="column" flex layout-padding>
+                <md-list>
+                    <md-list-item>
+                        <span><a ui-sref=".dashboard">Dashboard</a></span>
+                    </md-list-item>
+                    <md-list-item>
+                        <span><a ui-sref=".about">About</a></span>
+                    </md-list-item>
+                    <md-list-item>
+                        <span><a ui-sref=".documentation">Documentation</a></span>
+                    </md-list-item>
+                    <md-list-item>
+                        <span><a ui-sref="logout">Logout</a></span>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+
+        <md-content flex>
+            <div layout="column" layout-align="top center" layout-padding>
+                <div ui-view></div>
+            </div>
+            <div flex></div>
+            <footer>
+                <div layout="row" layout-align="space-around center">
+                    <span>Sonia, Nolan, Mark & James &copy; 2016</span>
+                    <span><a href="https://github.com/jadeclan/Assign2">See Our Code on Git Hub</a></span>
+                </div>
+            </footer>
+        </md-content>
+    </section>
+</div>
