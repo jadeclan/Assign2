@@ -59,11 +59,12 @@ app.controller('newToDoCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.date = new Date();
     // retrieve the list of priority types
     $http.get('/priorityList')
-        .success(function(response) {
+        .then(function(response) {
             $scope.priorities = response.data;
         });
+    // retrieve the list of status types
     $http.get('/statusList')
-        .success(function(response){
+        .then(function(response){
             $scope.statuses = response.data;
         });
     $scope.addRecord= AddNewToDo;
