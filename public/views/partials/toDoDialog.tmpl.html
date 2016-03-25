@@ -1,6 +1,6 @@
 <md-dialog style="max-width:800px;max-height:810px; ">
     <md-toolbar>
-        <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader"> Yo Yo What's up?
+        <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">Add a New To Do
             <md-dialog-actions>
                 <a role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
             </md-dialog-actions>
@@ -8,6 +8,25 @@
         <span flex></span>
     </md-toolbar>
     <md-dialog-content>
-            Yo stuff go here!!!!
+        <div ng-controller="newToDoCtrl">
+            <form name="newToDo">
+                <p>Task<input type="text" ng-model="newTask" /></p>
+                <p>
+                    <label for="repeatSelect">Select a Priority</label>
+                    <select name="priority" id="repeatSelect" ng-model="priority.repeatSelect">
+                        <option ng-repeat="p in priorities" value="{{p.index}}">{{p.priority}}</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="repeatSelect">Select a Status</label>
+                    <select name="status" id="repeatSelect" ng-model="status.repeatSelect">
+                        <option ng-repeat="s in statuses" value="{{s.index}}">{{s.status}}</option>
+                    </select>
+                </p>
+                <p ng-model="date">Date: {{date | date:'dd-MM-yyyy'}}</p>
+            </form>
+            <a role="button" ng-click="addRecord()">Save to List</a>
+            </div>
+        </div>
     </md-dialog-content>
 </md-dialog>

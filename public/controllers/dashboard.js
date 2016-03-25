@@ -45,6 +45,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
             preserveScope: true,
             templateUrl: '/views/partials/toDoDialog.tmpl.html',
             controller: function DialogController($scope, $mdDialog) {
+
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                 }
@@ -54,8 +55,19 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
     }
 });
 
-app.controller('priority', ['$scope', function($scope) {
-    $scope.data = db.employee.distinct("priority");
-    }]
-);
-
+app.controller('newToDoCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.date = new Date();
+    // retrieve the list of priority types
+    $http.get('/priorityList')
+        .success(function(response) {
+            $scope.priorities = response.data;
+        });
+    $http.get('/statusList')
+        .success(function(response){
+            $scope.statuses = response.data;
+        });
+    $scope.addRecord= AddNewToDo;
+    function AddNewToDo(){
+        alert('Got Here');
+    }
+    }]);

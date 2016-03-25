@@ -36,4 +36,26 @@ router.get('/employees', function(req, res, next) {
         .catch(next);
 });
 
+/**
+ * Get Unique Priority Types
+ */
+router.get('/priorityList', function(request, response, next){
+    Employee.distinct(request.todo.priority)
+        .then(function(data){
+            console.log(data);
+            respond.send(data) } )
+        .catch(next);
+});
+
+/**
+ * Get Unique Status Types
+ */
+router.get('/statusList', function(request, response, next){
+    Employee.distinct(request.todo.status)
+        .then(function(data){
+            console.log(data);
+            respond.send(data) } )
+        .catch(next);
+});
+
 module.exports = router;
