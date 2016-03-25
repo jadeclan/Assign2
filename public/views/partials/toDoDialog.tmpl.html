@@ -14,13 +14,13 @@
                 <p>
                     <label for="repeatSelect">Select a Priority</label>
                     <select name="priority" id="repeatSelect" ng-model="priority.repeatSelect">
-                        <option ng-repeat="p in priorities" value="{{p.index}}">{{p.priority}}</option>
+                        <option ng-repeat="p in priorities" value="{{p.index}}">{{p}}</option>
                     </select>
                 </p>
                 <p>
                     <label for="repeatSelect">Select a Status</label>
                     <select name="status" id="repeatSelect" ng-model="status.repeatSelect">
-                        <option ng-repeat="s in statuses" value="{{s.index}}">{{s.status}}</option>
+                        <option ng-repeat="s in statuses" value="{{s.index}}">{{s}}</option>
                     </select>
                 </p>
                 <p ng-model="date">Date: {{date | date:'dd-MM-yyyy'}}</p>

@@ -60,6 +60,7 @@ app.controller('newToDoCtrl', ['$scope', '$http', function($scope, $http) {
     // retrieve the list of priority types
     $http.get('/priorityList')
         .then(function(response) {
+            console.log(response);
             $scope.priorities = response.data;
         });
     // retrieve the list of status types

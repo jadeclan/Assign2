@@ -40,9 +40,8 @@ router.get('/employees', function(req, res, next) {
  * Get Unique Priority Types
  */
 router.get('/priorityList', function(request, response, next){
-    Employee.distinct(request.employee.todo.priority)
+    Employee.distinct("todo.priority")
         .then(function(data){
-            console.log(data);
             response.send(data) } )
         .catch(next);
 });
@@ -51,9 +50,8 @@ router.get('/priorityList', function(request, response, next){
  * Get Unique Status Types
  */
 router.get('/statusList', function(request, response, next){
-    Employee.distinct(request.employee.todo.status)
+    Employee.distinct('todo.status')
         .then(function(data){
-            console.log(data);
             response.send(data) } )
         .catch(next);
 });
