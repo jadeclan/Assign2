@@ -37,7 +37,7 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
 });
 
 app.controller('toDoController', function($scope, $http, $mdDialog){
-
+    $scope.showUpload = showNewToDo;
     function showNewToDo() {
         $mdDialog.show({
             clickOutsideToClose: true,

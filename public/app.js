@@ -57,8 +57,8 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                         templateUrl: 'views/dashboard.html'
                     },
                     'toDo@app.dashboard': {
-                        templateUrl: 'views/toDo.html'
-                        //controller: 'toDoController'
+                        templateUrl: 'views/toDo.html',
+                        controller: 'toDoController'
                     },
                     'messages@app.dashboard': {
                         templateUrl: 'views/messages.html',
