@@ -155,3 +155,7 @@ md-list-item.md-3-line{
 .dividerMargin{
     margin-bottom: 1%;
 }
+
+#dashboardCards div{
+    display: flex;
+}
