@@ -34,5 +34,28 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
             }
         });
     }
-
 });
+
+app.controller('toDoController', function($scope, $http, $mdDialog){
+
+    function showNewToDo() {
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            scope: $scope,
+            preserveScope: true,
+            templateUrl: '/views/partials/toDoDialog.tmpl.html',
+            controller: function DialogController($scope, $mdDialog) {
+                $scope.closeDialog = function() {
+                    $mdDialog.hide();
+                }
+
+            }
+        });
+    }
+});
+
+app.controller('priority', ['$scope', function($scope) {
+    $scope.data = db.employee.distinct("priority");
+    }]
+);
+
