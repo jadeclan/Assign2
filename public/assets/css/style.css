@@ -159,3 +159,7 @@ md-list-item.md-3-line{
 #dashboardCards div{
     display: flex;
 }
+
+#toDoChips md-input-container{
+    margin:0;
+}
