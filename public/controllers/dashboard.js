@@ -85,6 +85,25 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
         }
         });
     }
+
+    $scope.deleteSelection = deleteSelection;
+    function deleteSelection(t){
+        angular.forEach($scope.delChoice, function (item) {
+            item.Selected = false;
+        });
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            scope: $scope,
+            preserveScope: true,
+            templateUrl: '/views/partials/confirmDeleteDialog.tmpl.html',
+            controller: function DialogController($scope, $mdDialog) {
+
+                $scope.closeDialog = function() {
+                    $mdDialog.hide();
+                };
+            }
+        });
+    }
 });
 
 app.controller('newToDoCtrl', function($scope, $http) {
@@ -115,3 +134,13 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
             $scope.statuses = response.data;
         });
 }]);
+
+app.controller('deleteCtlr', function($scope, $http) {
+    // just need to delete.
+    $scope.deleteToDo= DeleteOldToDo;
+    function DeleteOldToDo(task){
+        taskToDelete = angular.toJson(task);
+        console.log('Got Inside Delete Record ' + taskToDelete);
+        alert('json object ' + taskToDelete);
+    }
+});

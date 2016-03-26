@@ -35,13 +35,13 @@
             </span>
         </div>
         <md-divider class="dividerMargin"></md-divider>
-        <div layout="row" ng-repeat='t in employee.todo | orderBy: sortField:sortReverse'>
-            <div flex="10">{{ t.date | date:'shortDate'}}</div>
-            <div flex="10">{{ t.priority }}</div>
-            <div flex="15">{{ t.status }}</div>
-            <div flex="45">{{ t.description }}</div>
-            <div flex="10"><md-checkbox type="checkbox" ng-checked="choice" ng-click="updateSelection(employee, t)"/></div>
-            <div flex><md-checkbox/></div>
+        <div layout="row" ng-repeat='task in employee.todo | orderBy: sortField:sortReverse'>
+            <div flex="10">{{ task.date | date:'shortDate'}}</div>
+            <div flex="10">{{ task.priority }}</div>
+            <div flex="15">{{ task.status }}</div>
+            <div flex="45">{{ task.description }}</div>
+            <div flex="10"><md-checkbox type="checkbox" ng-checked="choice" ng-click="updateSelection(task)"/></div>
+            <div flex><md-checkbox type="checkbox" ng-checked="delChoice" ng-click="deleteSelection(task)"/></div>
         </div>
         <div layout="row" layout-align="center center">
             <md-button ng-click="showUpload(employee)" class="md-button md-raised">Create a new To Do</md-button>
