@@ -39,12 +39,13 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
 app.controller('toDoController', function($scope, $http, $mdDialog){
     $scope.showUpload = showNewToDo;
     function showNewToDo(employee) {
+        $scope.employee = employee;
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
             preserveScope: true,
             templateUrl: '/views/partials/toDoDialog.tmpl.html',
-            controller: function DialogController($scope, $mdDialog) {
+            controller: function DialogController($scope, $http, $mdDialog) {
                 // alert('Inside toDoController ' + employee.firstname); //<- this worked
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
@@ -53,6 +54,15 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                 $scope.addRecord = AddNewToDo;
                 function AddNewToDo(task){
                     newTask = angular.toJson(task);
+
+                    $http.post('/todo', {task: task})
+                        .success(function(employee) {
+                            $scope.employee = employee;
+                        })
+                        .error(function(err) {
+
+                        });
+
                     console.log('Got Inside Add Record ' + newTask);
                     alert('json object ' + newTask);
                 }
@@ -61,10 +71,12 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
     }
 
     $scope.updateSelection = changeSelection;
-    function changeSelection(){
+    function changeSelection(task){
         angular.forEach($scope.choice, function (item) {
             item.Selected = false;
         });
+        task.date = new Date(task.date);
+        $scope.task = task;
         $mdDialog.show({
         clickOutsideToClose: true,
         scope: $scope,
@@ -91,6 +103,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
         angular.forEach($scope.delChoice, function (item) {
             item.Selected = false;
         });
+        $scope.task = t;
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,

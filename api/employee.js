@@ -56,4 +56,22 @@ router.get('/statusList', function(request, response, next){
         .catch(next);
 });
 
+
+router.post('/todo', authenticate, function(req, res, next) {
+	// create new todo
+	req.body.task.id = 999;
+	//req.body.task.date = new Date(req.body.task.date);
+	Employee.findOneAndUpdate(req.employee, {$push: {'todo': req.body.task}}, {new: true})
+		.then(function(employee) { res.send(employee) })
+		.catch(next);
+});
+
+router.put('/todo', authenticate, function(req, res, next) {
+  	// update todo
+});
+
+router.delete('/todo', authenticate, function(req, res, next) {
+	// delete todo
+});
+
 module.exports = router;

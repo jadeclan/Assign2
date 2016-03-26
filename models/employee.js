@@ -27,7 +27,7 @@ var employeeSchema = new mongoose.Schema({
         id: Number,
         status: String,
         priority: String,
-        date: Date,
+        date: String,
         description: String
     }],
 
