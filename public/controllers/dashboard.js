@@ -62,6 +62,9 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
 
     $scope.updateSelection = changeSelection;
     function changeSelection(){
+        angular.forEach($scope.choice, function (item) {
+            item.Selected = false;
+        });
         $mdDialog.show({
         clickOutsideToClose: true,
         scope: $scope,
@@ -72,6 +75,13 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
             $scope.closeDialog = function() {
                 $mdDialog.hide();
             };
+
+            $scope.updateRecord= UpdateOldToDo;
+            function UpdateOldToDo(task){
+                updatedTask = angular.toJson(task);
+                console.log('Got Inside Update Record ' + updatedTask);
+                alert('json object ' + updatedTask);
+            }
         }
         });
     }
@@ -104,8 +114,4 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
         .then(function(response){
             $scope.statuses = response.data;
         });
-    $scope.updateRecord= UpdateOldToDo;
-    function UpdateOldToDo(){
-
-    }
 }]);

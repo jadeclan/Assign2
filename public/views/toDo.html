@@ -40,7 +40,7 @@
             <div flex="10">{{ t.priority }}</div>
             <div flex="15">{{ t.status }}</div>
             <div flex="45">{{ t.description }}</div>
-            <div flex="10"><md-checkbox type="checkbox" name="choice" ng-click="updateSelection(employee, t)"/></div>
+            <div flex="10"><md-checkbox type="checkbox" ng-checked="choice" ng-click="updateSelection(employee, t)"/></div>
             <div flex><md-checkbox/></div>
         </div>
         <div layout="row" layout-align="center center">
