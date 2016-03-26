@@ -5,7 +5,7 @@
             <span class="md-headline">{{employee.firstname}}'s To Do List</span>
         </md-card-title-text>
     </md-card-title>
-    <md-card-content class="cardPadding">
+    <md-card-content class="cardPadding" ng-controller="toDoController">
         <div layout="row" class="cardContent">
             <div flex="10">
                 <a href="" ng-click="sortField='todo.date'; sortReverse = !sortReverse">Date
@@ -40,7 +40,7 @@
             <div flex="10">{{ t.priority }}</div>
             <div flex="15">{{ t.status }}</div>
             <div flex="45">{{ t.description }}</div>
-            <div flex="10"><md-checkbox/></div>
+            <div flex="10"><md-checkbox type="checkbox" name="choice" ng-click="updateSelection(employee, t)"/></div>
             <div flex><md-checkbox/></div>
         </div>
         <div layout="row" layout-align="center center">

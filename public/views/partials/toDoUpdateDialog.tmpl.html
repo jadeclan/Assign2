@@ -1,0 +1,53 @@
+<md-dialog style="width:750px;max-height:810px; ">
+    <md-toolbar>
+        <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">Edit Your To Do
+            <md-dialog-actions>
+                <a role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
+            </md-dialog-actions>
+        </div>
+        <span flex></span>
+    </md-toolbar>
+    <md-dialog-content>
+        <div ng-controller="updateToDoCtrl">
+            <form class="md-dialog-content" name="updateToDo">
+                <div layout="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Task</label>
+                        <input ng-model="updateTask">
+                    </md-input-container>
+                    <md-datepicker ng-model="date" md-placeholder="Enter date"></md-datepicker>
+                </div>
+
+                <div layout="row" layout-align="center center" id="toDoChips">
+                    <md-input-container>
+                        <h4 for="repeatSelectP" class="md-title">Priority</h4>
+                        <!--<label for="repeatSelect">Priority</label>-->
+                        <select name="priority" id="repeatSelectP" ng-model="priority.repeatSelect">
+                            <option ng-repeat="p in priorities" value="{{p.index}}">{{p}}</option>
+                        </select>
+                        <!--<md-chips>-->
+                        <!--<md-chip>Low</md-chip>-->
+                        <!--<md-chip>Medium</md-chip>-->
+                        <!--<md-chip>High</md-chip>-->
+                        <!--</md-chips>-->
+                    </md-input-container>
+                    <md-input-container>
+                        <h4 for="repeatSelect" class="md-title">Status</h4>
+                        <!--<label for="repeatSelect">Status</label>-->
+                        <select name="status" id="repeatSelect" ng-model="status.repeatSelect">
+                            <option ng-repeat="s in statuses" value="{{s.index}}">{{s}}</option>
+                        </select>
+                        <!--<md-chips>-->
+                        <!--<md-chip>Hockey</md-chip>-->
+                        <!--<md-chip>Lacrosse</md-chip>-->
+                        <!--<md-chip>Baseball</md-chip>-->
+                        <!--</md-chips>-->
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-align="center center">
+                    <md-button ng-click="updateRecord()" class="md-button md-raised">Save to List</md-button>
+                </div>
+            </form>
+        </div>
+    </md-dialog-content>
+</md-dialog>

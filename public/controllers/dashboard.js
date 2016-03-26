@@ -38,24 +38,46 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
 
 app.controller('toDoController', function($scope, $http, $mdDialog){
     $scope.showUpload = showNewToDo;
-    function showNewToDo() {
+    function showNewToDo(employee) {
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
             preserveScope: true,
             templateUrl: '/views/partials/toDoDialog.tmpl.html',
             controller: function DialogController($scope, $mdDialog) {
-
+                // alert('Inside toDoController ' + employee.firstname); //<- this worked
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
-                }
+                };
 
+                $scope.addRecord = AddNewToDo;
+                function AddNewToDo(task){
+                    newTask = angular.toJson(task);
+                    console.log('Got Inside Add Record ' + newTask);
+                    alert('json object ' + newTask);
+                }
             }
+        });
+    }
+
+    $scope.updateSelection = changeSelection;
+    function changeSelection(){
+        $mdDialog.show({
+        clickOutsideToClose: true,
+        scope: $scope,
+        preserveScope: true,
+        templateUrl: '/views/partials/toDoUpdateDialog.tmpl.html',
+        controller: function DialogController($scope, $mdDialog) {
+
+            $scope.closeDialog = function() {
+                $mdDialog.hide();
+            };
+        }
         });
     }
 });
 
-app.controller('newToDoCtrl', ['$scope', '$http', function($scope, $http) {
+app.controller('newToDoCtrl', function($scope, $http) {
     $scope.date = new Date();
     // retrieve the list of priority types
     $http.get('/priorityList')
@@ -68,8 +90,22 @@ app.controller('newToDoCtrl', ['$scope', '$http', function($scope, $http) {
         .then(function(response){
             $scope.statuses = response.data;
         });
-    $scope.addRecord= AddNewToDo;
-    function AddNewToDo(){
-        alert('Got Here');
+});
+
+app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.date = new Date();
+    // retrieve the list of priority types
+    $http.get('/priorityList')
+        .then(function(response) {
+            $scope.priorities = response.data;
+        });
+    // retrieve the list of status types
+    $http.get('/statusList')
+        .then(function(response){
+            $scope.statuses = response.data;
+        });
+    $scope.updateRecord= UpdateOldToDo;
+    function UpdateOldToDo(){
+
     }
-    }]);
+}]);
