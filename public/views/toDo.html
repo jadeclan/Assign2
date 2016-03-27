@@ -40,11 +40,11 @@
             <div flex="10">{{ task.priority }}</div>
             <div flex="15">{{ task.status }}</div>
             <div flex="45">{{ task.description }}</div>
-            <div flex="10"><md-checkbox type="checkbox" ng-checked="choice" ng-click="updateSelection(task)"/></div>
-            <div flex><md-checkbox type="checkbox" ng-checked="delChoice" ng-click="deleteSelection(task)"/></div>
+            <div flex="10"><md-checkbox type="checkbox" ng-model="task.updateSelected" ng-click="updateSelection(task)"/></div>
+            <div flex="5" ><md-checkbox type="checkbox" ng-model="task.deleteSelected" ng-click="deleteSelection(task)"/></div>
         </div>
         <div layout="row" layout-align="center center">
-            <md-button ng-click="showUpload(employee)" class="md-button md-raised">Create a new To Do</md-button>
+            <md-button ng-click="newToDo(employee)" class="md-button md-raised">Create a new To Do</md-button>
         </div>
     </md-card-content>
 </md-card>

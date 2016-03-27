@@ -37,25 +37,34 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
 });
 
 app.controller('toDoController', function($scope, $http, $mdDialog){
-    $scope.showUpload = showNewToDo;
+    var newTask ="";
+
+    $scope.newToDo = showNewToDo;
     function showNewToDo(employee) {
         $scope.employee = employee;
+        // Create new To Do array and populate default fields
+        var newTask = {};
+        newTask.date = new Date();
+        newTask.priority = "low";
+        newTask.status = "pending";
+        $scope.newTask = newTask;
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
             preserveScope: true,
             templateUrl: '/views/partials/toDoDialog.tmpl.html',
             controller: function DialogController($scope, $http, $mdDialog) {
-                // alert('Inside toDoController ' + employee.firstname); //<- this worked
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                 };
 
                 $scope.addRecord = AddNewToDo;
-                function AddNewToDo(task){
-                    newTask = angular.toJson(task);
-
-                    $http.post('/todo', {task: task})
+                function AddNewToDo(newTask){
+                    $scope.newTask = newTask;
+                    //if(!newTask.description || newTask.description === '') { return; }
+                    newTask = angular.toJson(newTask);
+                    console.log(newTask);
+                    $http.post('/todo', {task: newTask})
                         .success(function(employee) {
                             $scope.employee = employee;
                         })
@@ -63,20 +72,18 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
 
                         });
 
-                    console.log('Got Inside Add Record ' + newTask);
-                    alert('json object ' + newTask);
+                    // console.log('Got Inside Add Record ' + newTask);
+                    // alert('json object ' + newTask);
                 }
             }
         });
     }
 
     $scope.updateSelection = changeSelection;
-    function changeSelection(task){
-        angular.forEach($scope.choice, function (item) {
-            item.Selected = false;
-        });
-        task.date = new Date(task.date);
-        $scope.task = task;
+    function changeSelection(updateTask){
+
+        updateTask.date = new Date(updateTask.date);
+        $scope.updateTask = updateTask;
         $mdDialog.show({
         clickOutsideToClose: true,
         scope: $scope,
@@ -86,11 +93,12 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
 
             $scope.closeDialog = function() {
                 $mdDialog.hide();
+                $scope.updateTask.updateSelected = false;
             };
 
             $scope.updateRecord= UpdateOldToDo;
-            function UpdateOldToDo(task){
-                updatedTask = angular.toJson(task);
+            function UpdateOldToDo(newTaskUpdate){
+                updatedTask = angular.toJson(newTaskUpdate);
                 console.log('Got Inside Update Record ' + updatedTask);
                 alert('json object ' + updatedTask);
             }
@@ -99,11 +107,8 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
     }
 
     $scope.deleteSelection = deleteSelection;
-    function deleteSelection(t){
-        angular.forEach($scope.delChoice, function (item) {
-            item.Selected = false;
-        });
-        $scope.task = t;
+    function deleteSelection(deleteTask){
+        $scope.deleteTask = deleteTask;
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
@@ -113,6 +118,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
 
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
+                    $scope.deleteTask.deleteSelected = false;
                 };
             }
         });
@@ -124,7 +130,6 @@ app.controller('newToDoCtrl', function($scope, $http) {
     // retrieve the list of priority types
     $http.get('/priorityList')
         .then(function(response) {
-            console.log(response);
             $scope.priorities = response.data;
         });
     // retrieve the list of status types

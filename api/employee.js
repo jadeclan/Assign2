@@ -61,6 +61,7 @@ router.post('/todo', authenticate, function(req, res, next) {
 	// create new todo
 	req.body.task.id = 999;
 	//req.body.task.date = new Date(req.body.task.date);
+    alert(req.body.task);
 	Employee.findOneAndUpdate(req.employee, {$push: {'todo': req.body.task}}, {new: true})
 		.then(function(employee) { res.send(employee) })
 		.catch(next);

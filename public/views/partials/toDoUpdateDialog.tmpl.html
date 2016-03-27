@@ -1,6 +1,6 @@
 <md-dialog style="width:750px;max-height:810px; ">
     <md-toolbar>
-        <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">{{ employee.firstname }} Edit Your To Do
+        <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">{{ employee.firstname }} Edit This To Do and save or cancel
             <md-dialog-actions>
                 <a role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
             </md-dialog-actions>
@@ -13,16 +13,16 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex-gt-xs>
                         <label>Task</label>
-                        <input ng-model="task.description">
+                        <input ng-model="updateTask.description">
                     </md-input-container>
-                    <md-datepicker ng-model="task.date" md-placeholder="Enter date"></md-datepicker>
+                    <md-datepicker ng-model="updateTask.date" md-placeholder="Enter date"></md-datepicker>
                 </div>
 
                 <div layout="row" layout-align="center center" id="toDoChips">
                     <md-input-container>
                         <h4 for="repeatSelectP" class="md-title">Priority</h4>
                         <!--<label for="repeatSelect">Priority</label>-->
-                        <select ng-model="task.priority">
+                        <select ng-model="updateTask.priority">
                             <option ng-repeat="item in priorities" value="{{item}}">{{item}}</option>
                         </select>
                         <!--<md-chips>-->
@@ -34,7 +34,7 @@
                     <md-input-container>
                         <h4 for="repeatSelect" class="md-title">Status</h4>
                         <!--<label for="repeatSelect">Status</label>-->
-                        <select ng-model="task.status">
+                        <select ng-model="updateTask.status">
                             <option ng-repeat="item in statuses" value="{{item}}">{{item}}</option>
                         </select>
                         <!--<md-chips>-->
@@ -45,7 +45,7 @@
                     </md-input-container>
                 </div>
                 <div layout="row" layout-align="center center">
-                    <md-button ng-click="updateRecord(task)" class="md-button md-raised">Save to List</md-button>
+                    <md-button ng-click="updateRecord(updateTask)" class="md-button md-raised">Save to List</md-button>
                 </div>
             </form>
         </div>

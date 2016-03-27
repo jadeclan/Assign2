@@ -9,12 +9,13 @@
     </md-toolbar>
     <div ng-controller="deleteCtlr">
         <md-card-content class="cardPadding" >
-            <p>To Do: {{ task.description }}</p>
-            <p>Last Updated: {{task.date }}</p>
-            <p>Priority: {{task.priority}}</p>
-            <p>Status: {{task.status}}</p>
+            <p>Index: (for debugging) {{ deleteTask.id }}</p>
+            <p>To Do: {{ deleteTask.description }}</p>
+            <p>Last Updated: {{ deleteTask.date }}</p>
+            <p>Priority: {{ deleteTask.priority}}</p>
+            <p>Status: {{ deleteTask.status}}</p>
             <md-divider class="dividerMargin"></md-divider>
-            <md-button ng-click="deleteToDo(task)" class="md-button md-raised">Hasta La Vista, Baby!</md-button>
+            <md-button ng-click="deleteToDo(deleteTask)" class="md-button md-raised">Hasta La Vista, Baby!</md-button>
         </md-card-content>
     </div>
 </md-dialog>
