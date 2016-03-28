@@ -13,8 +13,8 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex-gt-xs>
                         <label>Task</label>
-                        <input ng-model="newTask.description" name="newDescription" ng-pattern="/^[0-9a-zA-Z\.\-\,\+]+$/" ng-required="true" required>
-                        <span ng-show="newToDo.newDescription.$error.pattern">Only a-z, A-Z, 0-9, comma, period, plus and dash are allowed</span>
+                        <input ng-model="newTask.description" name="newDescription" ng-pattern="/^[0-9a-zA-Z \_\.\-\,\+]+$/" ng-required="true" required>
+                        <span ng-show="newToDo.newDescription.$error.pattern">Only a-z, A-Z, 0-9, comma, space, underline, period, plus and dash are allowed</span>
                         <span ng-show="newToDo.newDescription.$error.required">This field is required!</span>
                     </md-input-container>
                     <md-datepicker ng-model="newTask.date" md-placeholder="Enter date"></md-datepicker>
