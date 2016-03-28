@@ -44,6 +44,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
         $scope.employee = employee;
         // Create new To Do array and populate default fields
         var newTask = {};
+        newTask.description = "";
         newTask.date = new Date();
         newTask.priority = "low";
         newTask.status = "pending";
@@ -59,9 +60,9 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                 };
 
                 $scope.addRecord = AddNewToDo;
-                function AddNewToDo(newTask){
+                function AddNewToDo(newTask, formData){
+                    if (formData.$invalid) { return; }
                     $scope.newTask = newTask;
-                    //if(!newTask.description || newTask.description === '') { return; }
                     newTask = angular.toJson(newTask);
                     console.log(newTask);
                     $http.post('/todo', {task: newTask})
