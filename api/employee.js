@@ -59,6 +59,7 @@ router.get('/statusList', function(request, response, next){
 
 router.post('/todo', authenticate, function(req, res, next) {
 	// create new todo
+    alert("inside post");
 	req.body.task.id = 999;
 	//req.body.task.date = new Date(req.body.task.date);
     alert(req.body.task);
@@ -73,6 +74,9 @@ router.put('/todo', authenticate, function(req, res, next) {
 
 router.delete('/todo', authenticate, function(req, res, next) {
 	// delete todo
+    alert("inside DELETE");
+    alert(req.body.task);
+    res.send(req.employee);
 });
 
 module.exports = router;

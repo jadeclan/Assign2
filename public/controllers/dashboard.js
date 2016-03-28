@@ -54,28 +54,25 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
             scope: $scope,
             preserveScope: true,
             templateUrl: '/views/partials/toDoDialog.tmpl.html',
-            controller: function DialogController($scope, $http, $mdDialog) {
+            controller: function DialogController($scope, $mdDialog) {
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                 };
 
-                $scope.addRecord = AddNewToDo;
-                function AddNewToDo(newTask, formData){
-                    if (formData.$invalid) { return; }
-                    $scope.newTask = newTask;
-                    newTask = angular.toJson(newTask);
-                    console.log(newTask);
-                    $http.post('/todo', {task: newTask})
-                        .success(function(employee) {
-                            $scope.employee = employee;
-                        })
-                        .error(function(err) {
-
-                        });
-
-                    // console.log('Got Inside Add Record ' + newTask);
-                    // alert('json object ' + newTask);
-                }
+                //$scope.addRecord = AddNewToDo;
+                //function AddNewToDo(newTask, newToDo){
+                //    if (newToDo.$invalid) { return; }
+                //    $scope.newTask = newTask;
+                //    newTask = angular.toJson(newTask);
+                //    console.log(newTask);
+                //    $http.post('/todo', {task: newTask})
+                //        .success(function(employee) {
+                //            $scope.employee = employee;
+                //        })
+                //        .error(function(err) {
+                //
+                //        });
+                //}
             }
         });
     }
@@ -138,6 +135,20 @@ app.controller('newToDoCtrl', function($scope, $http) {
         .then(function(response){
             $scope.statuses = response.data;
         });
+    $scope.addRecord = AddNewToDo;
+    function AddNewToDo(newTask, newToDo){
+        if (newToDo.$invalid) { return; }
+        $scope.newTask = newTask;
+        newTask = angular.toJson(newTask);
+        console.log(newTask);
+        $http.post('/todo', {task: newTask})
+            .success(function(employee) {
+                $scope.employee = employee;
+            })
+            .error(function(err) {
+                alert("failed post");
+            });
+    }
 });
 
 app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
@@ -159,7 +170,15 @@ app.controller('deleteCtlr', function($scope, $http) {
     $scope.deleteToDo= DeleteOldToDo;
     function DeleteOldToDo(task){
         taskToDelete = angular.toJson(task);
-        console.log('Got Inside Delete Record ' + taskToDelete);
-        alert('json object ' + taskToDelete);
+        console.log(taskToDelete);
+        $scope.taskToDelete = taskToDelete;
+        $http.delete('/todo', {task: taskToDelete})
+            .success(function(employee) {
+                $scope.employee = employee;
+                alert("Inside success");
+            })
+            .error(function(err) {
+                alert("Delete Error Thrown");
+            });
     }
 });
