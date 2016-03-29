@@ -18,7 +18,7 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
     var alert;
     $scope.showGreeting = showCustomGreeting;
     $scope.hasAlert = function() { return !!alert };
-    $scope.addMessage = addNewMessage;
+    //$scope.addMessage = addNewMessage;
     function showCustomGreeting(contact) {
         console.log(contact);
         $scope.contact = contact;
@@ -35,19 +35,19 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
         });
     }
 
-    function addNewMessage(){
-        $mdDialog.show({
-            clickOutsideToClose: true,
-            scope: $scope,
-            preserveScope: true,
-            templateUrl: '/views/partials/newMessageDialog.tmpl.html',
-            controller: function DialogController($scope, $mdDialog) {
-                $scope.closeDialog = function() {
-                    $mdDialog.hide();
-                }
-            }
-        });
-    }
+    //function addNewMessage(){
+    //    $mdDialog.show({
+    //        clickOutsideToClose: true,
+    //        scope: $scope,
+    //        preserveScope: true,
+    //        templateUrl: '/views/partials/newMessageDialog.tmpl.html',
+    //        controller: function DialogController($scope, $mdDialog) {
+    //            $scope.closeDialog = function() {
+    //                $mdDialog.hide();
+    //            }
+    //        }
+    //    });
+    //}
 
 });
 
@@ -198,39 +198,39 @@ app.controller('deleteCtlr', function($scope, $http) {
     }
 });
 
-app.controller('newMessageCtrl', function($scope, $http, $filter) {
-    $scope.date = new Date();
-    $scope.addNewMessage = addMessage;
-    function addMessage(newMessage){
-        $scope.newMessage = newMessage;
-        var createMessage = [{
-            contact: {
-                firstname: newMessage.messageFirst,
-                lastname: newMessage.messageLast,
-                university: {
-                    name: newMessage.university,
-                    address: newMessage.uniAddress,
-                    city: newMessage.uniCity,
-                    state: newMessage.uniState,
-                    zip: newMessage.uniZip,
-                    website: newMessage.website,
-                    latitude: 0,
-                    longitude: 0
-                },
-                date: $filter('date')(newMessage.date, 'M/d/yyyy'),
-                category: newMessage.category,
-                content: newMessage.message
-            }
-        }];
-
-        //if (newMessage.$invalid) { return; }
-        $http.post('/messages', {message: createMessage})
-            .success(function(employee) {
-                $scope.employee = employee;
-            })
-            .error(function(err) {
-                alert("failed post");
-            });
-
-    }
-});
+//app.controller('newMessageCtrl', function($scope, $http, $filter) {
+//    $scope.date = new Date();
+//    $scope.addNewMessage = addMessage;
+//    function addMessage(newMessage){
+//        $scope.newMessage = newMessage;
+//        var createMessage = [{
+//            contact: {
+//                firstname: newMessage.messageFirst,
+//                lastname: newMessage.messageLast,
+//                university: {
+//                    name: newMessage.university,
+//                    address: newMessage.uniAddress,
+//                    city: newMessage.uniCity,
+//                    state: newMessage.uniState,
+//                    zip: newMessage.uniZip,
+//                    website: newMessage.website,
+//                    latitude: 0,
+//                    longitude: 0
+//                },
+//                date: $filter('date')(newMessage.date, 'M/d/yyyy'),
+//                category: newMessage.category,
+//                content: newMessage.message
+//            }
+//        }];
+//
+//        //if (newMessage.$invalid) { return; }
+//        $http.post('/messages', {message: createMessage})
+//            .success(function(employee) {
+//                $scope.employee = employee;
+//            })
+//            .error(function(err) {
+//                alert("failed post");
+//            });
+//
+//    }
+//});

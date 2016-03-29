@@ -94,19 +94,19 @@ router.delete('/todo', authenticate, function(req, res, next) {
 });
 
 
-router.post('/messages', authenticate, function(req, res, next) {
-    Employee.findById(req.employee)
-        .then(function(employee) {
-            // todo: this should be found by looping through employee.messages and looking for the next available id
-            req.body.message.id = 999;
-            console.log(req.body.message);
-            employee.message.push(req.body.message);
-            return employee.save();
-        })
-        .then(function(employee) {
-            res.send(employee.message);
-        })
-        .catch(next);
-});
+//router.post('/messages', authenticate, function(req, res, next) {
+//    Employee.findById(req.employee)
+//        .then(function(employee) {
+//            // todo: this should be found by looping through employee.messages and looking for the next available id
+//            req.body.message.id = 999;
+//            console.log(req.body.message);
+//            employee.message.push(req.body.message);
+//            return employee.save();
+//        })
+//        .then(function(employee) {
+//            res.send(employee.message);
+//        })
+//        .catch(next);
+//});
 
 module.exports = router;
