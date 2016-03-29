@@ -139,7 +139,7 @@ app.controller('newToDoCtrl', function($scope, $http) {
     function AddNewToDo(newTask, newToDo){
         if (newToDo.$invalid) { return; }
         $scope.newTask = newTask;
-        newTask = angular.toJson(newTask);
+        //newTask = angular.toJson(newTask);
         console.log(newTask);
         $http.post('/todo', {task: newTask})
             .success(function(employee) {

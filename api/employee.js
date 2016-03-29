@@ -59,13 +59,29 @@ router.get('/statusList', function(request, response, next){
 
 router.post('/todo', authenticate, function(req, res, next) {
 	// create new todo
-    alert("inside post");
-	req.body.task.id = 999;
-	//req.body.task.date = new Date(req.body.task.date);
-    alert(req.body.task);
+
+    // alert(req.body.task) // this will not work in node, use console.log
+    console.log(req.body.task);
+
+    Employee.findById(req.employee)
+        .then(function(employee) {
+            // todo: this should be found by looping through employee.todo and looking for the next available id
+            req.body.task.id = 999;
+
+            employee.todo.push(req.body.task);
+
+            return employee.save();
+        })
+        .then(function(employee) {
+            res.send(employee.todo);
+        })
+        .catch(next);
+
+    /*
 	Employee.findOneAndUpdate(req.employee, {$push: {'todo': req.body.task}}, {new: true})
 		.then(function(employee) { res.send(employee) })
 		.catch(next);
+    */
 });
 
 router.put('/todo', authenticate, function(req, res, next) {
@@ -74,8 +90,6 @@ router.put('/todo', authenticate, function(req, res, next) {
 
 router.delete('/todo', authenticate, function(req, res, next) {
 	// delete todo
-    alert("inside DELETE");
-    alert(req.body.task);
     res.send(req.employee);
 });
 

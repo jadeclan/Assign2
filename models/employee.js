@@ -23,13 +23,17 @@ var employeeSchema = new mongoose.Schema({
     password: { type: String, select: false },
     salt: String,
 
-    todo: [{
-        id: Number,
-        status: String,
-        priority: String,
-        date: String,
-        description: String
-    }],
+    todo: {
+        type: [{
+            id: Number,
+            status: String,
+            priority: String,
+            date: Date,
+            description: String
+        }],
+
+        _id: false
+    },
 
     messages: [{
         id: Number,
@@ -55,8 +59,8 @@ var employeeSchema = new mongoose.Schema({
     books: [
         {
             id: Number,
-            isbn10: Number,
-            isbn13: Number,
+            isbn10: String,
+            isbn13: String,
             title: String,
             category: String
         }
