@@ -203,8 +203,23 @@ app.controller('newMessageCtrl', function($scope, $http) {
     $scope.addNewMessage = addMessage;
     function addMessage(newMessage){
         $scope.newMessage = newMessage;
+        var createMessage = {
+            messageName: newMessage.messageName,
+            messageDate: newMessage.date,
+            messageUniversity: newMessage.university,
+            messageUniAddress: newMessage.uniAddress,
+            messageCatogry: newMessage.category,
+            messageWebsite: newMessage.website,
+            messageContent: newMessage.message
+        };
         //if (newMessage.$invalid) { return; }
-        console.log(newMessage);
+        $http.post('/messages', {message: createMessage})
+            .success(function(employee) {
+                $scope.employee = employee;
+            })
+            .error(function(err) {
+                alert("failed post");
+            });
 
     }
 });

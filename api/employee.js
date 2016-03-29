@@ -93,4 +93,9 @@ router.delete('/todo', authenticate, function(req, res, next) {
     res.send(req.employee);
 });
 
+
+router.post('/messages', authenticate, function(req, res, next) {
+    console.log(req.body.message);
+});
+
 module.exports = router;
