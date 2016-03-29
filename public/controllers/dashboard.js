@@ -183,14 +183,14 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
 app.controller('deleteCtlr', function($scope, $http) {
     // just need to delete.
     $scope.deleteToDo= DeleteOldToDo;
-    function DeleteOldToDo(task){
-        taskToDelete = angular.toJson(task);
+    function DeleteOldToDo(taskToDelete){
+        //taskToDelete = angular.toJson(task);
         console.log(taskToDelete);
         $scope.taskToDelete = taskToDelete;
-        $http.delete('/todo', {task: taskToDelete})
+        $http.delete('/todo/' + taskToDelete.id)
             .success(function(employee) {
                 $scope.employee = employee;
-                alert("Inside success");
+                //alert("Inside success");
             })
             .error(function(err) {
                 alert("Delete Error Thrown");

@@ -88,25 +88,17 @@ router.put('/todo', authenticate, function(req, res, next) {
   	// update todo
 });
 
-router.delete('/todo', authenticate, function(req, res, next) {
+router.delete('/todo/:id', authenticate, function(req, res, next) {
 	// delete todo
-    res.send(req.employee);
+    Employee.findById(req.employee)
+        .then(function(employee) {
+            employee.todo.pop(req.params.id);
+            return employee.save();
+        })
+        .then(function(employee) {
+            res.send(employee.todo);
+        })
+        .catch(next);
 });
-
-
-//router.post('/messages', authenticate, function(req, res, next) {
-//    Employee.findById(req.employee)
-//        .then(function(employee) {
-//            // todo: this should be found by looping through employee.messages and looking for the next available id
-//            req.body.message.id = 999;
-//            console.log(req.body.message);
-//            employee.message.push(req.body.message);
-//            return employee.save();
-//        })
-//        .then(function(employee) {
-//            res.send(employee.message);
-//        })
-//        .catch(next);
-//});
 
 module.exports = router;
