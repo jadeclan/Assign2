@@ -98,24 +98,24 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
         updateTask.date = new Date(updateTask.date);
         $scope.updateTask = updateTask;
         $mdDialog.show({
-        clickOutsideToClose: true,
-        scope: $scope,
-        preserveScope: true,
-        templateUrl: '/views/partials/toDoUpdateDialog.tmpl.html',
-        controller: function DialogController($scope, $mdDialog) {
+            clickOutsideToClose: true,
+            scope: $scope,
+            preserveScope: true,
+            templateUrl: '/views/partials/toDoUpdateDialog.tmpl.html',
+            controller: function DialogController($scope, $mdDialog) {
 
-            $scope.closeDialog = function() {
-                $mdDialog.hide();
-                $scope.updateTask.updateSelected = false;
-            };
+                $scope.closeDialog = function() {
+                    $mdDialog.hide();
+                    $scope.updateTask.updateSelected = false;
+                };
 
-            $scope.updateRecord= UpdateOldToDo;
-            function UpdateOldToDo(newTaskUpdate){
-                updatedTask = angular.toJson(newTaskUpdate);
-                console.log('Got Inside Update Record ' + updatedTask);
-                alert('json object ' + updatedTask);
+                $scope.updateRecord= UpdateOldToDo;
+                function UpdateOldToDo(newTaskUpdate){
+                    updatedTask = angular.toJson(newTaskUpdate);
+                    console.log('Got Inside Update Record ' + updatedTask);
+                    alert('json object ' + updatedTask);
+                }
             }
-        }
         });
     }
 
@@ -198,30 +198,29 @@ app.controller('deleteCtlr', function($scope, $http) {
     }
 });
 
-app.controller('newMessageCtrl', function($scope, $http) {
+app.controller('newMessageCtrl', function($scope, $http, $filter) {
     $scope.date = new Date();
     $scope.addNewMessage = addMessage;
     function addMessage(newMessage){
         $scope.newMessage = newMessage;
-
         var createMessage = [{
             contact: {
-                messageFirstName: newMessage.messageFirst,
-                messageLastName: newMessage.messageLast
-            },
-            university: {
-                messageUniversity: newMessage.university,
-                messageUniAddress: newMessage.uniAddress,
-                messageUniCity: newMessage.uniCity,
-                messageUniState: newMessage.uniState,
-                messageUniZip: newMessage.uniZip,
-                messageWebsite: newMessage.website,
-                messageLatitude: 0,
-                messageLongitude: 0
-            },
-            messageDate: newMessage.date,
-            messageCategory: newMessage.category,
-            messageContent: newMessage.message
+                firstname: newMessage.messageFirst,
+                lastname: newMessage.messageLast,
+                university: {
+                    name: newMessage.university,
+                    address: newMessage.uniAddress,
+                    city: newMessage.uniCity,
+                    state: newMessage.uniState,
+                    zip: newMessage.uniZip,
+                    website: newMessage.website,
+                    latitude: 0,
+                    longitude: 0
+                },
+                date: $filter('date')(newMessage.date, 'M/d/yyyy'),
+                category: newMessage.category,
+                content: newMessage.message
+            }
         }];
 
         //if (newMessage.$invalid) { return; }

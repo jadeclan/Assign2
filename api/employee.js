@@ -95,17 +95,16 @@ router.delete('/todo', authenticate, function(req, res, next) {
 
 
 router.post('/messages', authenticate, function(req, res, next) {
-    console.log(req.body.message);
-
     Employee.findById(req.employee)
         .then(function(employee) {
             // todo: this should be found by looping through employee.messages and looking for the next available id
             req.body.message.id = 999;
-            employee.messages.push(req.body.message);
+            console.log(req.body.message);
+            employee.message.push(req.body.message);
             return employee.save();
         })
         .then(function(employee) {
-            res.send(employee.messages);
+            res.send(employee.message);
         })
         .catch(next);
 });
