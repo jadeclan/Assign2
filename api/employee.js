@@ -58,7 +58,7 @@ router.get('/statusList', function(request, response, next){
 
 
 router.post('/todo', authenticate, function(req, res, next) {
-	// create new todo
+    // create new todo
 
     // alert(req.body.task) // this will not work in node, use console.log
     console.log(req.body.task);
@@ -78,36 +78,27 @@ router.post('/todo', authenticate, function(req, res, next) {
         .catch(next);
 
     /*
-	Employee.findOneAndUpdate(req.employee, {$push: {'todo': req.body.task}}, {new: true})
-		.then(function(employee) { res.send(employee) })
-		.catch(next);
-    */
+     Employee.findOneAndUpdate(req.employee, {$push: {'todo': req.body.task}}, {new: true})
+     .then(function(employee) { res.send(employee) })
+     .catch(next);
+     */
 });
 
 router.put('/todo', authenticate, function(req, res, next) {
-  	// update todo
+    // update todo
 });
 
-router.delete('/todo', authenticate, function(req, res, next) {
-	// delete todo
-    res.send(req.employee);
-});
-
-
-/*
-router.post('/messages', authenticate, function(req, res, next) {
+router.delete('/todo/:id', authenticate, function(req, res, next) {
+    // delete todo
+    console.log(req.params.id);
     Employee.findById(req.employee)
         .then(function(employee) {
-            // todo: this should be found by looping through employee.messages and looking for the next available id
-            req.body.message.id = 999;
-            console.log(req.body.message);
-            employee.message.push(req.body.message);
+            employee.todo.pop(req.params.id);
             return employee.save();
         })
         .then(function(employee) {
-            res.send(employee.message);
+            res.send(employee.todo);
         })
         .catch(next);
 });
-
-module.exports = router;*/
+module.exports = router;

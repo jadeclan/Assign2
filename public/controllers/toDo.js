@@ -147,22 +147,12 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
  */
 app.controller('deleteCtlr', function($scope, $http) {
     // just need to delete.
-    $scope.deleteToDo = function DeleteOldToDo(task){
-        $scope.taskToDelete = {
-            id: 1234,
-            status: task.status,
-            priority: task.priority,
-            date: task.date,
-            description: task.description
-        };
-
-
-        console.log($scope.taskToDelete);
-
-        $http.delete('/todo', {task: $scope.taskToDelete})
+    $scope.deleteToDo = function DeleteOldToDo(taskToDelete){
+        $scope.taskToDelete = taskToDelete;
+        $http.delete('/todo/' + taskToDelete.id)
             .success(function(employee) {
                 $scope.employee = employee;
-                alert("Inside success");
+                //alert("Inside success");
             })
             .error(function(err) {
                 alert("Delete Error Thrown");
