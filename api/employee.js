@@ -57,7 +57,7 @@ router.get('/statusList', function(request, response, next){
 });
 
 
-router.post('/todo', authenticate, function(req, res, next) {
+/*router.post('/todo', authenticate, function(req, res, next) {
     // create new todo
 
     // alert(req.body.task) // this will not work in node, use console.log
@@ -77,15 +77,26 @@ router.post('/todo', authenticate, function(req, res, next) {
         })
         .catch(next);
 
-    /*
+    /!*
      Employee.findOneAndUpdate(req.employee, {$push: {'todo': req.body.task}}, {new: true})
      .then(function(employee) { res.send(employee) })
      .catch(next);
-     */
-});
+     *!/
+});*/
 
 router.put('/todo', authenticate, function(req, res, next) {
     // update todo
+
+    Employee.findById(req.employee)
+        .then( function(employee){
+            employee.todo.push(req.body.task);
+
+            return employee.save();
+        })
+        .then(function(employee){
+            res.send(employee.todo);
+        })
+        .catch(next);
 });
 
 router.delete('/todo/:id', authenticate, function(req, res, next) {

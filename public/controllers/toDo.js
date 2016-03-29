@@ -113,7 +113,7 @@ app.controller('newToDoCtrl', function($scope, $http) {
     $scope.addRecord = function AddNewToDo(newTask, newToDo){
         if (newToDo.$invalid) { return; }
 
-        $http.post('/todo', {task: newTask})
+        $http.put('/todo', {task: newTask})
             .success(function(employee) {
                 $scope.employee = employee;
             })
