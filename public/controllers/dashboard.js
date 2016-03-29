@@ -14,4 +14,3 @@ app.controller('booksController', function($scope, $http){
     //    });
 });
 
-
