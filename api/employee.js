@@ -3,7 +3,10 @@
  *
  * API ENDPOINTS
  *
- * GET      /employeeDetails                get authenticated employee information
+ * GET      /
+
+/**
+ * employeeDetails                get authenticated employee information
  *
  * GET      /employees              get a list of employees
  *
@@ -61,6 +64,7 @@ router.post('/todo', authenticate, function(req, res, next) {
 	// create new todo
 
     // alert(req.body.task) // this will not work in node, use console.log
+
     console.log(req.body.task);
 
     Employee.findById(req.employee)
@@ -90,23 +94,39 @@ router.put('/todo', authenticate, function(req, res, next) {
 
 router.delete('/todo', authenticate, function(req, res, next) {
 	// delete todo
-    res.send(req.employee);
+    console.log("got to here");
+    /*Employee.findById(req.employee)
+        .then(function(employee){
+            console.log("got to this point");
+            console.log(employee);
+        })
+        .then(function(employee){
+            res.send(req.employee);
+        })
+        .catch(next);*/
 });
 
 
-router.post('/messages', authenticate, function(req, res, next) {
-    Employee.findById(req.employee)
+/*router.post('/messages', authenticate, function(req, res, next) {
+    Employee.findById(req.body.employee)
         .then(function(employee) {
             // todo: this should be found by looping through employee.messages and looking for the next available id
-            req.body.message.id = 999;
-            console.log(req.body.message);
-            employee.message.push(req.body.message);
+
+            var numMessages = employee.messages;
+            console.log(numMessages);
+            console.log(employee.messages);
+
+            employee.messages.push({
+                id: (numMessages.length + 1),
+                messages: req.body.message
+            });
+
             return employee.save();
         })
         .then(function(employee) {
             res.send(employee.message);
         })
         .catch(next);
-});
+});*/
 
 module.exports = router;
