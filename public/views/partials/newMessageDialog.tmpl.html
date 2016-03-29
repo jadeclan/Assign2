@@ -17,25 +17,50 @@
                     </md-input-container>
                     <md-datepicker ng-model="newMessage.date" md-placeholder="Enter date"></md-datepicker>
                 </div>
+
+
                 <div layout="row">
-                    <md-input-container class="md-block" flex-gt-xs>
-                        <label>University Name</label>
-                        <input ng-model="newMessage.university" name="newUniversity" ng-required="true" required>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-xs>
-                        <label>University Address</label>
-                        <input ng-model="newMessage.uniAddress" name="newAddress" ng-required="true" required>
-                    </md-input-container>
+                    <md-card>
+                        <md-card-content>
+                            <md-input-container class="md-block" flex-gt-xs>
+                                <label>University Name</label>
+                                <input ng-model="newMessage.university" name="newUniversity" ng-required="true" required>
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-xs>
+                                <label>Address</label>
+                                <input ng-model="newMessage.uniAddress" name="newAddress" ng-required="true" required>
+                            </md-input-container>
+                            <div layout="row">
+                                <md-input-container class="md-block" flex-gt-xs>
+                                    <label>City</label>
+                                    <input ng-model="newMessage.uniCity" name="newCity" ng-required="true" required>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-xs>
+                                    <label>State</label>
+                                    <input ng-model="newMessage.uniState" name="newUniState" ng-required="true" required>
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-xs>
+                                    <label>Zip</label>
+                                    <input ng-model="newMessage.uniZip" name="newZip" ng-required="true" required>
+                                </md-input-container>
+                             </div>
+                        </md-card-content>
+                    </md-card>
+                    <div layout="column">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Category</label>
+                            <input ng-model="newMessage.category" name="newCategory" ng-required="true" required>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Website</label>
+                            <input ng-model="newMessage.website" name="newWebsite" ng-required="true" required>
+                        </md-input-container>
+                    </div>
                 </div>
+
+
                 <div layout="row">
-                    <md-input-container class="md-block" flex-gt-xs>
-                        <label>Category</label>
-                        <input ng-model="newMessage.category" name="newCategory" ng-required="true" required>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-xs>
-                        <label>Website</label>
-                        <input ng-model="newMessage.website" name="newWebsite" ng-required="true" required>
-                    </md-input-container>
+
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block" flex-gt-xs>

@@ -208,6 +208,9 @@ app.controller('newMessageCtrl', function($scope, $http) {
             messageDate: newMessage.date,
             messageUniversity: newMessage.university,
             messageUniAddress: newMessage.uniAddress,
+            messageUniCity: newMessage.uniCity,
+            messageUniState: newMessage.uniState,
+            messageUniZip: newMessage.uniZip,
             messageCatogry: newMessage.category,
             messageWebsite: newMessage.website,
             messageContent: newMessage.message
