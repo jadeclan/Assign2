@@ -1,0 +1,53 @@
+<md-dialog style="width:750px;max-height:810px; ">
+    <md-toolbar>
+        <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">{{ employee.firstname }} Create A New Message
+            <md-dialog-actions>
+                <a role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
+            </md-dialog-actions>
+        </div>
+        <span flex></span>
+    </md-toolbar>
+    <md-dialog-content>
+        <div ng-controller="newMessageCtrl">
+            <form class="md-dialog-content" name="newMessage" required>
+                <div layout="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Name</label>
+                        <input ng-model="newMessage.messagename" name="newName" ng-required="true" required>
+                    </md-input-container>
+                    <md-datepicker ng-model="newMessage.date" md-placeholder="Enter date"></md-datepicker>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>University Name</label>
+                        <input ng-model="newMessage.university" name="newUniversity" ng-required="true" required>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>University Address</label>
+                        <input ng-model="newMessage.uniAddress" name="newAddress" ng-required="true" required>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Category</label>
+                        <input ng-model="newMessage.category" name="newCategory" ng-required="true" required>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Website</label>
+                        <input ng-model="newMessage.website" name="newWebsite" ng-required="true" required>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Message</label>
+                        <input ng-model="newMessage.message" name="newMessage" ng-required="true" required>
+                    </md-input-container>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <md-button ng-click="addNewMessage(newMessage)" class="md-button md-raised">Add Message</md-button>
+                </div>
+            </form>
+        </div>
+    </md-dialog-content>
+</md-dialog>

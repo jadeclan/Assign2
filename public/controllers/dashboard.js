@@ -18,7 +18,7 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
     var alert;
     $scope.showGreeting = showCustomGreeting;
     $scope.hasAlert = function() { return !!alert };
-
+    $scope.addMessage = addNewMessage;
     function showCustomGreeting(contact) {
         console.log(contact);
         $scope.contact = contact;
@@ -34,6 +34,21 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
             }
         });
     }
+
+    function addNewMessage(){
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            scope: $scope,
+            preserveScope: true,
+            templateUrl: '/views/partials/newMessageDialog.tmpl.html',
+            controller: function DialogController($scope, $mdDialog) {
+                $scope.closeDialog = function() {
+                    $mdDialog.hide();
+                }
+            }
+        });
+    }
+
 });
 
 app.controller('toDoController', function($scope, $http, $mdDialog){
@@ -180,5 +195,16 @@ app.controller('deleteCtlr', function($scope, $http) {
             .error(function(err) {
                 alert("Delete Error Thrown");
             });
+    }
+});
+
+app.controller('newMessageCtrl', function($scope, $http) {
+    $scope.date = new Date();
+    $scope.addNewMessage = addMessage;
+    function addMessage(newMessage){
+        $scope.newMessage = newMessage;
+        //if (newMessage.$invalid) { return; }
+        console.log(newMessage);
+
     }
 });

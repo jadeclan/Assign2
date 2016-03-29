@@ -163,3 +163,13 @@ md-list-item.md-3-line{
 #toDoChips md-input-container{
     margin:0;
 }
+
+.md-button.md-fab{
+    line-height: 42px;
+    width: 45px;
+    height: 45px;
+}
+
+.md-button.md-fab:hover{
+    background-color: transparent;
+}
