@@ -203,21 +203,27 @@ app.controller('newMessageCtrl', function($scope, $http) {
     $scope.addNewMessage = addMessage;
     function addMessage(newMessage){
         $scope.newMessage = newMessage;
-        var createMessage = {
-            messageFirstName: newMessage.messageFirst,
-            messageLastName: newMessage.messageLast,
-            messageUniversity: newMessage.university,
-            messageUniAddress: newMessage.uniAddress,
-            messageUniCity: newMessage.uniCity,
-            messageUniState: newMessage.uniState,
-            messageUniZip: newMessage.uniZip,
-            messageWebsite: newMessage.website,
-            messageLatitude: 0,
-            messageLongitude: 0,
+
+        var createMessage = [{
+            contact: {
+                messageFirstName: newMessage.messageFirst,
+                messageLastName: newMessage.messageLast
+            },
+            university: {
+                messageUniversity: newMessage.university,
+                messageUniAddress: newMessage.uniAddress,
+                messageUniCity: newMessage.uniCity,
+                messageUniState: newMessage.uniState,
+                messageUniZip: newMessage.uniZip,
+                messageWebsite: newMessage.website,
+                messageLatitude: 0,
+                messageLongitude: 0
+            },
             messageDate: newMessage.date,
             messageCategory: newMessage.category,
             messageContent: newMessage.message
-        };
+        }];
+
         //if (newMessage.$invalid) { return; }
         $http.post('/messages', {message: createMessage})
             .success(function(employee) {

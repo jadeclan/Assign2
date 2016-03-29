@@ -101,13 +101,11 @@ router.post('/messages', authenticate, function(req, res, next) {
         .then(function(employee) {
             // todo: this should be found by looping through employee.messages and looking for the next available id
             req.body.message.id = 999;
-
-            employee.message.push(req.body.message);
-
+            employee.messages.push(req.body.message);
             return employee.save();
         })
         .then(function(employee) {
-            res.send(employee.message);
+            res.send(employee.messages);
         })
         .catch(next);
 });
