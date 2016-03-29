@@ -204,15 +204,18 @@ app.controller('newMessageCtrl', function($scope, $http) {
     function addMessage(newMessage){
         $scope.newMessage = newMessage;
         var createMessage = {
-            messageName: newMessage.messageName,
-            messageDate: newMessage.date,
+            messageFirstName: newMessage.messageFirst,
+            messageLastName: newMessage.messageLast,
             messageUniversity: newMessage.university,
             messageUniAddress: newMessage.uniAddress,
             messageUniCity: newMessage.uniCity,
             messageUniState: newMessage.uniState,
             messageUniZip: newMessage.uniZip,
-            messageCatogry: newMessage.category,
             messageWebsite: newMessage.website,
+            messageLatitude: 0,
+            messageLongitude: 0,
+            messageDate: newMessage.date,
+            messageCategory: newMessage.category,
             messageContent: newMessage.message
         };
         //if (newMessage.$invalid) { return; }
