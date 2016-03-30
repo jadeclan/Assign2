@@ -101,7 +101,7 @@ app.controller('newToDoCtrl', function($scope, $http) {
         $http.put('/todo', {task: newTask})
             .success(function(employee) {
                 $scope.employee = employee;
-                $mdDialog.hide();
+                $scope.closeDialog();
             })
             .error(function(err) {
                 alert("failed post");
@@ -132,14 +132,14 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
 /**
  * DELETE CONTROLLER
  */
-app.controller('deleteCtlr', function($scope, $http) {
+app.controller('deleteCtlr', function($scope, $http, $state) {
     // just need to delete.
     $scope.deleteToDo = function DeleteOldToDo(taskToDelete){
         $scope.taskToDelete = taskToDelete;
         $http.delete('/todo/' + taskToDelete.id)
             .success(function(employee) {
                 $scope.employee = employee;
-                $mdDialog.hide();
+                $scope.closeDialog();
             })
             .error(function(err) {
                 alert("Delete Error Thrown");

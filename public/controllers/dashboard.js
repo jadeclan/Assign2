@@ -128,7 +128,7 @@ app.controller('newToDoCtrl', function($scope, $http) {
         $http.post('/todo', {task: newTask})
             .success(function(employee) {
                 $scope.employee = employee;
-                $mdDialog.hide();
+                $scope.$mdDialog.hide();
             })
             .error(function(err) {
                 alert("failed post");
@@ -150,7 +150,7 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
         });
 }]);
 
-app.controller('deleteCtlr', function($scope, $http) {
+app.controller('deleteCtlr', function($scope, $http, $state) {
     // just need to delete.
     $scope.deleteToDo= DeleteOldToDo;
     function DeleteOldToDo(task){
@@ -160,7 +160,8 @@ app.controller('deleteCtlr', function($scope, $http) {
         $http.delete('/todo', {task: taskToDelete})
             .success(function(employee) {
                 $scope.employee = employee;
-                $mdDialog.hide();
+                $scope.mdDialog.hide();
+                $state.go('app.dashboard');
             })
             .error(function(err) {
                 alert("Delete Error Thrown");
