@@ -139,6 +139,7 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
         .then(function(response){
             $scope.statuses = response.data;
         });
+
 }]);
 
 
