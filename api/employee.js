@@ -91,10 +91,20 @@ router.put('/todo', authenticate, function(req, res, next) {
 
 router.delete('/todo/:id', authenticate, function(req, res, next) {
     // delete todo
-    console.log(req.params.id);
     Employee.findById(req.employee)
         .then(function(employee) {
-            employee.todo.pop(req.params.id);
+
+            var index = -1;
+
+            for(var j = 0; j < employee.todo.length; j++){
+                if(req.params.id == employee.todo[j].id){
+                    index = j;
+                }
+            }
+
+            console.log(index);
+            employee.todo.splice(index, 1);
+
             return employee.save();
         })
         .then(function(employee) {
