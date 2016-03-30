@@ -173,3 +173,8 @@ md-list-item.md-3-line{
 .md-button.md-fab:hover{
     background-color: transparent;
 }
+
+
+.deletePadding{
+    padding:8px 0 8px 8px;
+}
