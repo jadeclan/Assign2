@@ -41,10 +41,10 @@
             <div flex="15">{{ task.status }}</div>
             <div flex="45">{{ task.description }}</div>
             <div flex="10">
-                <md-checkbox class="fa fa-edit" type="checkbox" ng-model="task.updateSelected" ng-click="updateSelection(task)"/>
+                <md-checkbox class="fa fa-edit" aria-label="Update Selected" type="checkbox" ng-model="task.updateSelected" ng-click="updateSelection(task)"/>
             </div>
             <div flex="5" >
-                <md-checkbox type="checkbox" ng-model="task.deleteSelected" ng-click="deleteSelection(task)"/>
+                <md-checkbox type="checkbox" aria-label="Delete Selected" ng-model="task.deleteSelected" ng-click="deleteSelection(task)"/>
             </div>
         </div>
         <div layout="row" layout-align="center center">
