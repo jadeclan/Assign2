@@ -14,28 +14,6 @@ app.controller('booksController', function($scope, $http){
     //    });
 });
 
-app.controller('messagesController', function($scope, $http, $mdDialog){
-    var alert;
-    $scope.showGreeting = showCustomGreeting;
-    $scope.hasAlert = function() { return !!alert };
-
-    function showCustomGreeting(contact) {
-        console.log(contact);
-        $scope.contact = contact;
-        $mdDialog.show({
-            clickOutsideToClose: true,
-            scope: $scope,
-            preserveScope: true,
-            templateUrl: '/views/partials/messagesDialog.tmpl.html',
-            controller: function DialogController($scope, $mdDialog) {
-                $scope.closeDialog = function() {
-                    $mdDialog.hide();
-                }
-            }
-        });
-    }
-});
-
 app.controller('toDoController', function($scope, $http, $mdDialog){
     var newTask ="";
 
@@ -149,22 +127,3 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
             $scope.statuses = response.data;
         });
 }]);
-
-app.controller('deleteCtlr', function($scope, $http, $state) {
-    // just need to delete.
-    $scope.deleteToDo= DeleteOldToDo;
-    function DeleteOldToDo(task){
-        taskToDelete = angular.toJson(task);
-        console.log(taskToDelete);
-        $scope.taskToDelete = taskToDelete;
-        $http.delete('/todo', {task: taskToDelete})
-            .success(function(employee) {
-                $scope.employee = employee;
-                $scope.mdDialog.hide();
-                $state.go('app.dashboard');
-            })
-            .error(function(err) {
-                alert("Delete Error Thrown");
-            });
-    }
-});
