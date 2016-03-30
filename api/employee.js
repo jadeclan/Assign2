@@ -56,39 +56,29 @@ router.get('/statusList', function(request, response, next){
         .catch(next);
 });
 
-
-/*router.post('/todo', authenticate, function(req, res, next) {
-    // create new todo
-
-    // alert(req.body.task) // this will not work in node, use console.log
-    console.log(req.body.task);
-
-    Employee.findById(req.employee)
-        .then(function(employee) {
-            // todo: this should be found by looping through employee.todo and looking for the next available id
-            req.body.task.id = 999;
-
-            employee.todo.push(req.body.task);
-
-            return employee.save();
-        })
-        .then(function(employee) {
-            res.send(employee.todo);
-        })
-        .catch(next);
-
-    /!*
-     Employee.findOneAndUpdate(req.employee, {$push: {'todo': req.body.task}}, {new: true})
-     .then(function(employee) { res.send(employee) })
-     .catch(next);
-     *!/
-});*/
-
 router.put('/todo', authenticate, function(req, res, next) {
     // update todo
 
     Employee.findById(req.employee)
         .then( function(employee){
+            // Get the list of taken id numbers that have been used
+            var idsTaken = [];
+            for(var i=0; i<employee.todo.length; i++){
+                idsTaken.push(employee.todo[i].id);
+            }
+            var newID = 1;
+            var idFound=false;
+            while(!idFound){
+                if(idsTaken.indexOf(newID) >-1){
+                    newID++;
+                } else {
+                    idFound = true;
+                }
+            }
+            console.log("The new ID will be: ");
+            console.log(newID);
+            req.body.task.id = newID;
+
             employee.todo.push(req.body.task);
 
             return employee.save();

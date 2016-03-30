@@ -28,21 +28,6 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                 };
-
-                //$scope.addRecord = AddNewToDo;
-                //function AddNewToDo(newTask, newToDo){
-                //    if (newToDo.$invalid) { return; }
-                //    $scope.newTask = newTask;
-                //    newTask = angular.toJson(newTask);
-                //    console.log(newTask);
-                //    $http.post('/todo', {task: newTask})
-                //        .success(function(employee) {
-                //            $scope.employee = employee;
-                //        })
-                //        .error(function(err) {
-                //
-                //        });
-                //}
             }
         });
     }
@@ -116,6 +101,7 @@ app.controller('newToDoCtrl', function($scope, $http) {
         $http.put('/todo', {task: newTask})
             .success(function(employee) {
                 $scope.employee = employee;
+                $mdDialog.hide();
             })
             .error(function(err) {
                 alert("failed post");
@@ -153,7 +139,7 @@ app.controller('deleteCtlr', function($scope, $http) {
         $http.delete('/todo/' + taskToDelete.id)
             .success(function(employee) {
                 $scope.employee = employee;
-                //alert("Inside success");
+                $mdDialog.hide();
             })
             .error(function(err) {
                 alert("Delete Error Thrown");
