@@ -93,7 +93,7 @@ app.controller('newToDoCtrl', function($scope, $http) {
     $http.get('/statusList')
         .then(function(response){
             $scope.statuses = response.data;
-        })
+        });
 
     $scope.addRecord = function AddNewToDo(newTask, newToDo){
         if (newToDo.$invalid) { return; }
