@@ -66,6 +66,7 @@ router.put('/todo', authenticate, function(req, res, next) {
             for(var i=0; i<employee.todo.length; i++){
                 idsTaken.push(employee.todo[i].id);
             }
+
             var newID = 1;
             var idFound=false;
             while(!idFound){
@@ -75,8 +76,6 @@ router.put('/todo', authenticate, function(req, res, next) {
                     idFound = true;
                 }
             }
-            console.log("The new ID will be: ");
-            console.log(newID);
             req.body.task.id = newID;
 
             employee.todo.push(req.body.task);
