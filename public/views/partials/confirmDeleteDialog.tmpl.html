@@ -7,14 +7,16 @@
         </div>
         <span flex></span>
     </md-toolbar>
-    <div class="deletePadding" layout="column" ng-controller="deleteCtlr">
-        <p><b>Description:</b> {{ deleteTask.description }}</p>
-        <p><b>Date:</b> {{ deleteTask.date }}</p>
-        <p><b>Priority:</b> {{ deleteTask.priority}}</p>
-        <p><b>Status:</b> {{ deleteTask.status}}</p>
-    </div>
-    <md-divider class="dividerMargin"></md-divider>
-    <div layout="row" layout-align="center center">
-        <md-button ng-click="deleteToDo(deleteTask)" class="md-button md-raised">Delete ToDo</md-button>
+    <div ng-controller="deleteCtlr">
+        <div class="deletePadding" layout="column">
+            <p><b>Description:</b> {{ deleteTask.description }}</p>
+            <p><b>Date:</b> {{ deleteTask.date }}</p>
+            <p><b>Priority:</b> {{ deleteTask.priority}}</p>
+            <p><b>Status:</b> {{ deleteTask.status}}</p>
+        </div>
+        <md-divider class="dividerMargin"></md-divider>
+        <div layout="row" layout-align="center center">
+            <md-button ng-click="deleteToDo(deleteTask)" class="md-button md-raised">Delete ToDo</md-button>
+        </div>
     </div>
 </md-dialog>
