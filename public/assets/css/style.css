@@ -191,3 +191,13 @@ md-list-item.md-no-proxy{
 #cardwidth{
     width: inherit;
 }
+
+md-chips .md-chips{
+    box-shadow: none;
+}
+
+.md-chips .md-chip{
+    height: inherit;
+    line-height: inherit;
+    margin: 0;
+}

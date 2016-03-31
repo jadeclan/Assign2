@@ -24,26 +24,16 @@
                     <md-input-container>
                         <h4 for="repeatSelectP" class="md-title">Priority</h4>
                         <!--<label for="repeatSelect">Priority</label>-->
-                        <select ng-model="newTask.priority">
-                            <option ng-repeat="item in priorities" value="{{item}}">{{item}}</option>
-                        </select>
-                        <!--<md-chips>-->
-                            <!--<md-chip>Low</md-chip>-->
-                            <!--<md-chip>Medium</md-chip>-->
-                            <!--<md-chip>High</md-chip>-->
-                        <!--</md-chips>-->
+                        <md-select ng-model="newTask.priority">
+                            <md-option ng-repeat="item in priorities" value="{{item}}">{{item}}</md-option>
+                        </md-select>
                     </md-input-container>
                     <md-input-container>
                         <h4 for="repeatSelect" class="md-title">Status</h4>
                         <!--<label for="repeatSelect">Status</label>-->
-                        <select ng-model="newTask.status">
-                            <option ng-repeat="item in statuses" value="{{item}}">{{item}}</option>
-                        </select>
-                        <!--<md-chips>-->
-                            <!--<md-chip>Hockey</md-chip>-->
-                            <!--<md-chip>Lacrosse</md-chip>-->
-                            <!--<md-chip>Baseball</md-chip>-->
-                        <!--</md-chips>-->
+                        <md-select ng-model="newTask.status">
+                            <md-option ng-repeat="item in statuses" value="{{item}}">{{item}}</md-option>
+                        </md-select>
                     </md-input-container>
                 </div>
                 <div layout="row" layout-align="center center">
