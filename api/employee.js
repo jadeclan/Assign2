@@ -57,7 +57,7 @@ router.get('/statusList', function(request, response, next){
 });
 
 router.put('/todo', authenticate, function(req, res, next) {
-    // update todo
+    // Add a new todo
 
     Employee.findById(req.employee)
         .then( function(employee){
@@ -88,6 +88,33 @@ router.put('/todo', authenticate, function(req, res, next) {
         .catch(next);
 });
 
+router.put('/updateToDo/', authenticate, function(req, res, next){
+    //Update a to do
+    Employee.findById(req.employee)
+        .then(function(employee) {
+
+            var index = -1;
+
+            for(var j = 0; j < employee.todo.length; j++){
+                if(req.body.task.id == employee.todo[j].id){
+                    index = j;
+                }
+            }
+
+            var updatedToDo = req.body.task;
+
+            employee.todo.splice(index, 1);  //Delete the old to do
+
+            employee.todo.push(updatedToDo); //Add the updated to do
+
+            return employee.save();
+        })
+        .then(function(employee) {
+            res.send(employee.todo);
+        })
+        .catch(next);
+});
+
 router.delete('/todo/:id', authenticate, function(req, res, next) {
     // delete todo
     Employee.findById(req.employee)
@@ -101,7 +128,6 @@ router.delete('/todo/:id', authenticate, function(req, res, next) {
                 }
             }
 
-            console.log(index);
             employee.todo.splice(index, 1);
 
             return employee.save();

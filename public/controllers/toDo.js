@@ -48,10 +48,17 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                     $scope.updateTask.updateSelected = false;
                 };
 
-                $scope.updateRecord = function UpdateOldToDo(newTaskUpdate){
-                    updatedTask = angular.toJson(newTaskUpdate);
-                    console.log('Got Inside Update Record ' + updatedTask);
-                    alert('json object ' + updatedTask);
+                $scope.updateRecord = function UpdateOldToDo(updateTask, updateToDo){
+                    if (updateToDo.$invalid) { return; }
+
+                    $http.put('/updateToDo/', {task: updateTask})
+                        .success(function(employee) {
+                            $scope.employee = employee;
+                            $scope.closeDialog();
+                        })
+                        .error(function(err) {
+                            alert("failed post");
+                        });
                 }
             }
         });
@@ -135,7 +142,9 @@ app.controller('updateToDoCtrl', ['$scope', '$http', function($scope, $http) {
 app.controller('deleteCtlr', function($scope, $http, $state) {
     // just need to delete.
     $scope.deleteToDo = function DeleteOldToDo(taskToDelete){
+
         $scope.taskToDelete = taskToDelete;
+
         $http.delete('/todo/' + taskToDelete.id)
             .success(function(employee) {
                 $scope.employee = employee;

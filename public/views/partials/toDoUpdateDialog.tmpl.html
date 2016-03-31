@@ -13,7 +13,9 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex-gt-xs>
                         <label>Task</label>
-                        <input ng-model="updateTask.description">
+                        <input ng-model="updateTask.description" name="updatedDescription" ng-pattern="/^[0-9a-zA-Z \_\.\-\,\+]+$/" ng-required="true" required>
+                        <span ng-show="updateToDo.newDescription.$error.pattern">Only a-z, A-Z, 0-9, comma, space, underline, period, plus and dash are allowed</span>
+                        <span ng-show="updateToDo.newDescription.$error.required">This field is required!</span>
                     </md-input-container>
                     <md-datepicker ng-model="updateTask.date" md-placeholder="Enter date"></md-datepicker>
                 </div>
@@ -45,7 +47,7 @@
                     </md-input-container>
                 </div>
                 <div layout="row" layout-align="center center">
-                    <md-button ng-click="updateRecord(updateTask)" class="md-button md-raised">Save to List</md-button>
+                    <md-button ng-click="updateRecord(updateTask, updateToDo)" class="md-button md-raised">Save to List</md-button>
                 </div>
             </form>
         </div>
