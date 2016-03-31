@@ -183,3 +183,7 @@ md-list-item.md-3-line{
     background-color: #fff;
     width: 100%;
 }
+
+md-list-item.md-no-proxy{
+    padding: 0 8px;
+}
