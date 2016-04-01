@@ -160,10 +160,6 @@ md-list-item.md-3-line{
     display: flex;
 }
 
-#toDoChips md-input-container{
-    margin:0;
-}
-
 .md-button.md-fab{
     line-height: 42px;
     width: 45px;
@@ -182,6 +178,8 @@ md-list-item.md-3-line{
 .activeLink{
     background-color: #fff;
     width: 100%;
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
 }
 
 md-list-item.md-no-proxy{
@@ -215,4 +213,16 @@ md-chips .md-chips{
 .low, .completed{
     background-color: #4CAF50 !important;
     color: #fff !important;
+}
+
+.wrapDescription{
+    word-wrap: break-word;
+}
+
+label{
+    font-size: 16pt;
+}
+
+#messageList md-list-item.md-no-proxy{
+    padding: 8px 0 8px 0;
 }

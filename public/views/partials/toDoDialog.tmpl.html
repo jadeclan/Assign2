@@ -20,18 +20,18 @@
                     <md-datepicker ng-model="newTask.date" md-placeholder="Enter date"></md-datepicker>
                 </div>
 
-                <div layout="row" layout-align="center center" id="toDoChips">
+                <div layout="row">
                     <md-input-container>
-                        <h4 for="repeatSelectP" class="md-title">Priority</h4>
-                        <!--<label for="repeatSelect">Priority</label>-->
-                        <md-select ng-model="newTask.priority">
+                        <!--<h4 for="repeatSelectP" class="md-title">Priority</h4>-->
+                        <label>Priority</label>
+                        <md-select aria-label="Priority Selected" ng-model="newTask.priority">
                             <md-option ng-repeat="item in priorities" value="{{item}}">{{item}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container>
-                        <h4 for="repeatSelect" class="md-title">Status</h4>
-                        <!--<label for="repeatSelect">Status</label>-->
-                        <md-select ng-model="newTask.status">
+                        <!--<h4 for="repeatSelect" class="md-title">Status</h4>-->
+                        <label>Status</label>
+                        <md-select aria-label="Status Selected" ng-model="newTask.status">
                             <md-option ng-repeat="item in statuses" value="{{item}}">{{item}}</md-option>
                         </md-select>
                     </md-input-container>
