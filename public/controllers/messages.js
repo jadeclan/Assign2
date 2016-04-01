@@ -4,6 +4,13 @@
 
 app.controller('messagesController', function($scope, $http, $mdDialog){
     var alert;
+
+    // Need to convert the messages date to a date object
+    $scope.sortDates = function(e) {
+        var date = new Date(e.date);
+        return date;
+    };
+    
     $scope.showGreeting = showCustomGreeting;
     $scope.hasAlert = function() { return !!alert };
     //$scope.addMessage = addNewMessage;
