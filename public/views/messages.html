@@ -6,7 +6,7 @@
     </md-card-title>
     <md-card-content id="messageList">
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="e in employee.messages | orderBy: 'date'">
+            <md-list-item class="md-3-line" ng-repeat="e in employee.messages | orderBy: 'date':true">
                 <div class="md-list-item-text" layout="column">
                     <div layout="column" layout-align="center center">
                         <h3>{{e.contact.firstname}} {{e.contact.lastname}}</h3>

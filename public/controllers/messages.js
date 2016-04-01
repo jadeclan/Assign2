@@ -23,19 +23,6 @@ app.controller('messagesController', function($scope, $http, $mdDialog){
         });
     }
 
-    function addNewMessage(){
-        $mdDialog.show({
-            clickOutsideToClose: true,
-            scope: $scope,
-            preserveScope: true,
-            templateUrl: '/views/partials/newMessageDialog.tmpl.html',
-            controller: function DialogController($scope, $mdDialog) {
-                $scope.closeDialog = function() {
-                    $mdDialog.hide();
-                }
-            }
-        });
-    }
 });
 
 /*app.controller('newMessageCtrl', function($scope, $http, $filter) {
