@@ -87,7 +87,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
 /**
  * CREATE CONTROLLER
  */
-app.controller('newToDoCtrl', function($scope, $http) {
+app.controller('newToDoCtrl', function($scope, $http, $filter) {
     $scope.date = new Date();
 
     // retrieve the list of priority types
@@ -104,6 +104,8 @@ app.controller('newToDoCtrl', function($scope, $http) {
 
     $scope.addRecord = function AddNewToDo(newTask, newToDo){
         if (newToDo.$invalid) { return; }
+        // Get the right date format
+        newTask.date = $filter('date')(newTask.date, 'M/d/yyyy');
 
         $http.put('/todo', {task: newTask})
             .success(function(employee) {
