@@ -8,6 +8,7 @@
  */
 app.controller('toDoController', function($scope, $http, $mdDialog){
     var newTask ="";
+    $scope.sortField='date';
 
     $scope.newToDo = function showNewToDo(employee) {
         $scope.employee = employee;
