@@ -57,6 +57,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                         .success(function(employee) {
                             $scope.employee = employee;
                             $scope.closeDialog();
+                            window.location.reload(true);
                         })
                         .error(function(err) {
                             alert("failed post");
@@ -79,6 +80,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                     $scope.deleteTask.deleteSelected = false;
+                    window.location.reload(true);
                 };
             }
         });
@@ -113,6 +115,7 @@ app.controller('newToDoCtrl', function($scope, $http, $filter) {
             .success(function(employee) {
                 $scope.employee = employee;
                 $scope.closeDialog();
+                window.location.reload(true);
             })
             .error(function(err) {
                 alert("failed post");
@@ -153,6 +156,7 @@ app.controller('deleteCtlr', function($scope, $http, $state) {
             .success(function(employee) {
                 $scope.employee = employee;
                 $scope.closeDialog();
+                window.location.reload(true);
             })
             .error(function(err) {
                 alert("Delete Error Thrown");
