@@ -179,7 +179,7 @@ md-list-item.md-3-line{
     padding:8px 0 8px 8px;
 }
 
-.active{
+.activeLink{
     background-color: #fff;
     width: 100%;
 }
@@ -200,4 +200,19 @@ md-chips .md-chips{
     height: inherit;
     line-height: inherit;
     margin: 0;
+}
+
+.high, .active{
+    background-color: #F44336 !important;
+    color: #fff !important;
+}
+
+.medium, .pending{
+    background-color: #FF9100 !important;
+    color: #fff !important;
+}
+
+.low, .completed{
+    background-color: #4CAF50 !important;
+    color: #fff !important;
 }

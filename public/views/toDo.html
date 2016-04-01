@@ -40,11 +40,11 @@
         <div layout="row" ng-repeat='task in employee.todo | orderBy: sortField:sortReverse'>
             <div flex="10">{{ task.date | date:'shortDate'}}</div>
             <md-chips flex="10">
-                <md-chip>{{ task.priority }}</md-chip>
+                <md-chip ng-class="task.priority;">{{ task.priority }}</md-chip>
             </md-chips>
             <span flex></span>
             <md-chips flex="10">
-                <md-chip>{{ task.status }}</md-chip>
+                <md-chip ng-class="task.status;">{{ task.status }}</md-chip>
             </md-chips>
             <span flex></span>
             <!--<div flex="15">{{ task.status }}</div>-->
