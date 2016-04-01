@@ -8,6 +8,7 @@
  */
 app.controller('toDoController', function($scope, $http, $mdDialog){
     var newTask ="";
+    // setting default date sort for the to do list
     $scope.sortField='date';
 
     $scope.newToDo = function showNewToDo(employee) {
