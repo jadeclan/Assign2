@@ -56,11 +56,13 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                     $http.put('/updateToDo/', {task: updateTask})
                         .success(function(employee) {
                             $scope.employee = employee;
-                            $scope.closeDialog();
-                            window.location.reload(true);
                         })
                         .error(function(err) {
-                            alert("failed post");
+                            alert("failed to make your changes SORRY - will reload the page");
+                        })
+                        .finally(function(){
+                            $scope.closeDialog();
+                            window.location.reload(true);
                         });
                 }
             }
@@ -109,16 +111,18 @@ app.controller('newToDoCtrl', function($scope, $http, $filter) {
     $scope.addRecord = function AddNewToDo(newTask, newToDo){
         if (newToDo.$invalid) { return; }
         // Get the right date format
-        newTask.date = $filter('date')(newTask.date, 'M/d/yyyy');
+        // newTask.date = $filter('date')(newTask.date, 'M/d/yyyy');
 
         $http.put('/todo', {task: newTask})
             .success(function(employee) {
                 $scope.employee = employee;
-                $scope.closeDialog();
-                window.location.reload(true);
             })
             .error(function(err) {
-                alert("failed post");
+                alert("failed to add your new to do SORRY - Reloading page");
+            })
+            .finally(function(){
+                $scope.closeDialog();
+                window.location.reload(true);
             });
     }
 });
@@ -155,11 +159,13 @@ app.controller('deleteCtlr', function($scope, $http, $state) {
         $http.delete('/todo/' + taskToDelete.id)
             .success(function(employee) {
                 $scope.employee = employee;
+            })
+            .error(function(err) {
+                alert("Delete Error Thrown - nothing deleted, reloading the page");
+            })
+            .finally(function(){
                 $scope.closeDialog();
                 window.location.reload(true);
             })
-            .error(function(err) {
-                alert("Delete Error Thrown");
-            });
     }
 });
