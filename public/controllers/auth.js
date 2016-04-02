@@ -21,7 +21,8 @@ app
 
         $scope.login = function() {
             $auth.login($scope.employee)
-                .then(function() {
+                .then(function(token) {
+                    //$auth.setToken(token);
                     $state.go('app.dashboard');
                 })
                 .catch(function() {

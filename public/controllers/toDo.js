@@ -32,11 +32,11 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                 };
             }
         });
-    }
+    };
 
     $scope.updateSelection = function changeSelection(updateTask){
-        updateTask.date = new Date(updateTask.date);
-        $scope.updateTask = updateTask;
+
+        $scope.updateTask = angular.copy(updateTask);
 
         $mdDialog.show({
             clickOutsideToClose: true,
@@ -44,7 +44,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
             preserveScope: true,
             templateUrl: '/views/partials/toDoUpdateDialog.tmpl.html',
             controller: function DialogController($scope, $mdDialog) {
-
+                $scope.updateTask.date = new Date($scope.updateTask.date);
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                     $scope.updateTask.updateSelected = false;
@@ -54,35 +54,33 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                     if (updateToDo.$invalid) { return; }
 
                     $http.put('/updateToDo/', {task: updateTask})
-                        .success(function(employee) {
-                            $scope.employee = employee;
+                        .success(function(todo) {
+                            angular.copy(todo, $scope.employee.todo);
                         })
                         .error(function(err) {
                             alert("failed to make your changes SORRY - will reload the page");
                         })
                         .finally(function(){
                             $scope.closeDialog();
-                            window.location.reload(true);
                         });
                 }
             }
         });
-    }
+    };
 
     $scope.deleteSelection = function deleteSelection(deleteTask){
-        $scope.deleteTask = deleteTask;
-
+        $scope.deleteTask = angular.copy(deleteTask);
+        $scope.deleteTask.date = new Date($scope.deleteTask.date);
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
             preserveScope: true,
             templateUrl: '/views/partials/confirmDeleteDialog.tmpl.html',
             controller: function DialogController($scope, $mdDialog) {
-
+                //angular.copy(new Date($scope.deleteTask.date), $scope.deleteTask.date);
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                     $scope.deleteTask.deleteSelected = false;
-                    window.location.reload(true);
                 };
             }
         });
@@ -114,15 +112,14 @@ app.controller('newToDoCtrl', function($scope, $http, $filter) {
         // newTask.date = $filter('date')(newTask.date, 'M/d/yyyy');
 
         $http.put('/todo', {task: newTask})
-            .success(function(employee) {
-                $scope.employee = employee;
+            .success(function(todo) {
+                angular.copy(todo, $scope.employee.todo);
             })
             .error(function(err) {
                 alert("failed to add your new to do SORRY - Reloading page");
             })
             .finally(function(){
                 $scope.closeDialog();
-                window.location.reload(true);
             });
     }
 });
@@ -157,15 +154,14 @@ app.controller('deleteCtlr', function($scope, $http, $state) {
         $scope.taskToDelete = taskToDelete;
 
         $http.delete('/todo/' + taskToDelete.id)
-            .success(function(employee) {
-                $scope.employee = employee;
+            .success(function(todo) {
+                angular.copy(todo, $scope.employee.todo);
             })
             .error(function(err) {
                 alert("Delete Error Thrown - nothing deleted, reloading the page");
             })
             .finally(function(){
                 $scope.closeDialog();
-                window.location.reload(true);
             })
     }
 });

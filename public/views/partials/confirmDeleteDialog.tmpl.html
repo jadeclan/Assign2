@@ -10,7 +10,7 @@
     <div ng-controller="deleteCtlr">
         <div class="deletePadding" layout="column">
             <p><b>Description:</b> {{ deleteTask.description }}</p>
-            <p><b>Date:</b> {{ deleteTask.date }}</p>
+            <p><b>Date:</b> {{ deleteTask.date.toDateString('M/dd/yyyy') }}</p>
             <p><b>Priority:</b> {{ deleteTask.priority}}</p>
             <p><b>Status:</b> {{ deleteTask.status}}</p>
         </div>
