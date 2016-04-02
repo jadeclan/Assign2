@@ -2,7 +2,7 @@
     <md-toolbar>
         <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">{{ employee.firstname }} Add a To Do
             <md-dialog-actions>
-                <a role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
+                <a href role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
             </md-dialog-actions>
         </div>
         <span flex></span>
@@ -43,25 +43,3 @@
         </div>
     </md-dialog-content>
 </md-dialog>
-
-<!--Only Kept this for a reference, but try to use the above stuff and chips/badges are still not working-->
-<!--<div class="md-dialog-content" layout-xs="column" layout-gt-xs="row" ng-controller="newToDoCtrl">-->
-<!--<form name="newToDo">-->
-<!--<p>Task<input type="text" ng-model="newTask" /></p>-->
-<!--<p>-->
-<!--<label for="repeatSelect">Select a Priority</label>-->
-<!--<select name="priority" id="repeatSelect" ng-model="priority.repeatSelect">-->
-<!--<option ng-repeat="p in priorities" value="{{p.index}}">{{p}}</option>-->
-<!--</select>-->
-<!--</p>-->
-<!--<p>-->
-<!--<label for="repeatSelect">Select a Status</label>-->
-<!--<select name="status" id="repeatSelect" ng-model="status.repeatSelect">-->
-<!--<option ng-repeat="s in statuses" value="{{s.index}}">{{s}}</option>-->
-<!--</select>-->
-<!--</p>-->
-<!--<p ng-model="date">Date: {{date | date:'dd-MM-yyyy'}}</p>-->
-<!--</form>-->
-<!--<md-button ng-click="addRecord()">Save to List</md-button>-->
-<!--</div>-->
-
