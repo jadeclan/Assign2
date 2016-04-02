@@ -22,7 +22,7 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer', 'u
 
         $mdThemingProvider.theme('default');
 
-        $urlRouterProvider.otherwise('/dashboard');
+        $urlRouterProvider.otherwise('/login');
 
         $stateProvider
 
