@@ -231,3 +231,17 @@ label{
     height: 300px;
     width: 300px;
 }
+
+#devLeader{
+    box-shadow: 0 2px 5px 0 #1B5E20;
+}
+
+#devLeaderName{
+    color: #1B5E20;
+    font-size: 22pt;
+    font-weight: bold;
+}
+
+#devLeaderImg{
+    width: 300px;
+}
