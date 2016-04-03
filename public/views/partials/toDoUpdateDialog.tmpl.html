@@ -1,7 +1,7 @@
 <md-dialog style="width:750px;max-height:810px; ">
     <md-toolbar>
         <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">{{ employee.firstname }} Edit This To Do and save or cancel
-            <md-dialog-actions>
+            <md-dialog-actions">
                 <a href role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
             </md-dialog-actions>
         </div>
@@ -13,9 +13,9 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex-gt-xs>
                         <label>Task</label>
-                        <input ng-model="updateTask.description" name="updatedDescription" ng-pattern="/^[0-9a-zA-Z \_\.\-\,\+]+$/" ng-required="true" required>
-                        <span ng-show="updateToDo.newDescription.$error.pattern">Only a-z, A-Z, 0-9, comma, space, underline, period, plus and dash are allowed</span>
-                        <span ng-show="updateToDo.newDescription.$error.required">This field is required!</span>
+                        <input ng-model="updateTask.description" name="updatedDescription" ng-pattern="/^[0-9a-zA-Z \_\.\-\,\+\!\(\)\?\$\@\#\&\*\%\^]+$/" ng-required="true" required>
+                        <span ng-show="updateToDo.updatedDescription.$error.pattern">Only a-z, A-Z, 0-9, comma, space,_,.,+,(),?,!,$,@, #,%,^,&,* and - are allowed</span>
+                        <span ng-show="updateToDo.updatedDescription.$error.required">This field is required!</span>
                     </md-input-container>
                     <md-datepicker ng-model="updateTask.date" md-placeholder="Enter date"></md-datepicker>
                 </div>

@@ -4,7 +4,7 @@
 
 
 /**
- * TODOpage CONTROLLER
+ * TODO page CONTROLLER
  */
 app.controller('toDoController', function($scope, $http, $mdDialog){
     var newTask ="";
@@ -45,6 +45,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
             templateUrl: '/views/partials/toDoUpdateDialog.tmpl.html',
             controller: function DialogController($scope, $mdDialog) {
                 $scope.updateTask.date = new Date($scope.updateTask.date);
+
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                     $scope.updateTask.updateSelected = false;
@@ -77,7 +78,6 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
             preserveScope: true,
             templateUrl: '/views/partials/confirmDeleteDialog.tmpl.html',
             controller: function DialogController($scope, $mdDialog) {
-                //angular.copy(new Date($scope.deleteTask.date), $scope.deleteTask.date);
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                     $scope.deleteTask.deleteSelected = false;
@@ -108,8 +108,6 @@ app.controller('newToDoCtrl', function($scope, $http, $filter) {
 
     $scope.addRecord = function AddNewToDo(newTask, newToDo){
         if (newToDo.$invalid) { return; }
-        // Get the right date format
-        // newTask.date = $filter('date')(newTask.date, 'M/d/yyyy');
 
         $http.put('/todo', {task: newTask})
             .success(function(todo) {

@@ -1,7 +1,7 @@
 <md-dialog style="width:750px;max-height:810px; ">
     <md-toolbar>
         <div layout="row" layout-align="space-between center" class="md-toolbar-tools subheader">{{ employee.firstname }} Add a To Do
-            <md-dialog-actions>
+            <md-dialog-actions ng-controller="toDoController">
                 <a href role="button" ng-click="closeDialog()"><i class="material-icons">clear</i></a>
             </md-dialog-actions>
         </div>
@@ -13,8 +13,8 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex-gt-xs>
                         <label>Task</label>
-                        <input ng-model="newTask.description" name="newDescription" ng-pattern="/^[0-9a-zA-Z \_\.\-\,\+]+$/" ng-required="true" required>
-                        <span ng-show="newToDo.newDescription.$error.pattern">Only a-z, A-Z, 0-9, comma, space, underline, period, plus and dash are allowed</span>
+                        <input ng-model="newTask.description" name="newDescription" ng-pattern="/^[0-9a-zA-Z \_\.\-\,\+\!\(\)\?\$\@\#\&\*\%\^]+$/" ng-required="true" required>
+                        <span ng-show="newToDo.newDescription.$error.pattern">Only a-z, A-Z, 0-9, comma, space,_,.,+,(),?,!,$,@, #,%,^,&,* and - are allowed</span>
                         <span ng-show="newToDo.newDescription.$error.required">This field is required!</span>
                     </md-input-container>
                     <md-datepicker ng-model="newTask.date" md-placeholder="Enter date"></md-datepicker>
