@@ -37,7 +37,6 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
     $scope.updateSelection = function changeSelection(updateTask){
 
         $scope.updateTask = angular.copy(updateTask);
-
         $mdDialog.show({
             clickOutsideToClose: true,
             scope: $scope,
@@ -48,7 +47,9 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
 
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
+
                     $scope.updateTask.updateSelected = false;
+                    //$scope.task = angular.copy(updateTask);
                 };
 
                 $scope.updateRecord = function UpdateOldToDo(updateTask, updateToDo){
