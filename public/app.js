@@ -9,7 +9,7 @@
  *
  * https://docs.angularjs.org/api/ng/function/angular.module
  */
-var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
+var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer', 'uiGmapgoogle-maps'])
 
     /**
      * ui.router --> https://scotch.io/tutorials/angular-routing-using-ui-router
@@ -18,7 +18,7 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
      * These are created in your app.js.
      */
 
-    .config( function($stateProvider, $urlRouterProvider, $mdThemingProvider){
+    .config( function($stateProvider, $urlRouterProvider, $mdThemingProvider, uiGmapGoogleMapApiProvider){
 
         $mdThemingProvider.theme('default');
 
@@ -41,6 +41,18 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
             .state('app', {
                 abstract: true,
                 templateUrl: 'views/app.html',
+                resolve: {
+                    loginRequired: function($q, $auth, $state){
+                        var deferred = $q.defer();
+                        if ($auth.isAuthenticated()){
+                            deferred.resolve();
+                        }else{
+                            $state.go('login');
+                            deferred.reject();
+                        }
+                        return deferred.promise;
+                    }
+                },
                 controller: function($scope, $http) {
                     $http.get('/employeeDetails')
                         .success(function(employee) {
@@ -85,6 +97,11 @@ var app = angular.module('COMP4513',['ui.router', 'ngMaterial', 'satellizer'])
                 //controller: 'aboutController'
             })
 
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyCId0Q2FUMjLkN40W5Rl2qaUXACu_uaY5M',
+            //v: '3.20', //defaults to latest 3.X anyhow
+            libraries: 'weather,geometry,visualization'
+        });
 
     }).run(function($rootScope, $state, $stateParams) {
 

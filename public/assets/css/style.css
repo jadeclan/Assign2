@@ -226,3 +226,8 @@ label{
 #messageList md-list-item.md-no-proxy{
     padding: 8px 0 8px 0;
 }
+
+.angular-google-map-container{
+    height: 300px;
+    width: 300px;
+}

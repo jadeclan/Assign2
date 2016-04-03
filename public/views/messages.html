@@ -10,7 +10,7 @@
                 <div class="md-list-item-text" layout="column">
                     <div layout="column" layout-align="center center">
                         <h3>{{e.contact.firstname}} {{e.contact.lastname}}</h3>
-                        <a role="button" class="messageUniLink" ng-click="showGreeting(e.contact.university)">{{e.contact.university.name}}</a>
+                        <a href role="button" class="messageUniLink" ng-click="showGreeting(e.contact.university)">{{e.contact.university.name}}</a>
                     </div>
                     <h4><b>Date:</b> {{ e.date }}</h4>
                     <h4><b>Category:</b> {{e.category}}</h4>
