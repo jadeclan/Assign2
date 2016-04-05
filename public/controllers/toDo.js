@@ -66,6 +66,9 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                             $scope.closeDialog();
                         });
                 }
+            },
+            onRemoving: function() {
+                updateTask.updateSelected = false;
             }
         });
     };
