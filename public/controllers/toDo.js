@@ -47,9 +47,7 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
 
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
-
                     $scope.updateTask.updateSelected = false;
-                    //$scope.task = angular.copy(updateTask);
                 };
 
                 $scope.updateRecord = function UpdateOldToDo(updateTask, updateToDo){
@@ -86,6 +84,9 @@ app.controller('toDoController', function($scope, $http, $mdDialog){
                     $mdDialog.hide();
                     $scope.deleteTask.deleteSelected = false;
                 };
+            },
+            onRemoving: function() {
+                deleteTask.deleteSelected = false;
             }
         });
     }
